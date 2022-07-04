@@ -1,19 +1,38 @@
 import {useState, useEffect} from "react";
 import AddUser from "./add-user";
 import DeleteUser from "./delete-user";
+import jwt from 'jwt-decode'
+import { useHistory } from 'react-router-dom'
 
 const User = () => {
+    const history = useHistory()
     const [x,setX] = useState(1);
     const [data,setData]= useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => {
-                return res.json();
-            }).then(data => {
-            setData(data)
-        }).catch(err =>{
-            console.log("errrrr");
-        })
+        const token = localStorage.getItem('token')
+
+        if (token) {
+            const user = jwt(token)
+            if (!user) {
+                localStorage.removeItem('token')
+                history.push('/login')
+            } else {
+                fetch('http://localhost:5000/users',{
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization" : `Bearer ${token}`
+                    },
+                })
+                    .then(res => {
+                        return res.json();
+                    }).then(data => {
+                    setData(data)
+                }).catch(err =>{
+                    console.log("errrrr");
+                })
+            }
+        }
+
         },[x])
 
     const refresh = () => {

@@ -1,30 +1,60 @@
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, useHistory,Redirect} from "react-router-dom";
 import './App.css';
 import User from "./components/user-component/User";
 import Header from "./Header";
 import Menu from "./Menu";
 import NotFound from "./components/not-found/not-found";
+import Login from "./components/Login-component/Login";
+import {useEffect, useState} from "react";
+import {isExpired} from "react-jwt";
 function App() {
-  return (
+    const [currentUser, setCurrentUser] = useState("");
+    const history = useHistory()
+    const [redirctTo, setRedirctTo] = useState(false);
+    useEffect(() => {
 
-      <Router>
-          <div className="Wrapper">
-              <Menu />
-              <Header/>
+            const user = localStorage.getItem("user")
+            if (user) {
+                if(isExpired(localStorage.getItem("token"))){
+                    localStorage.removeItem(localStorage.getItem("token"));
+                    setRedirctTo(true)
+
+                }else{
+                    setRedirctTo(false)
+                    setCurrentUser(user);
+
+                    alert("ahaha"+user)
+                }
+
+            }
+      //      alert("pfff"+localStorage.getItem("user"))
+
+
+    }, []);
+if(redirctTo){
+    return <Login/>
+}
+  return (
+      <div>
+          <Router>
               <Switch>
-                  <Route exact path="/user">
-                      <User/>
-                  </Route>
-                  <Route exact path="/">
-                      <User/>
-                  </Route>
-                  <Route exact path="*">
-                      <NotFound/>
-                  </Route>
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/" component={Login} />
+                  {{currentUser} &&
+                  <div>
+                      <Menu />
+                      <Header/>
+                      <Route exact path="/user" component={User}/>
+                      <Route exact path="*" component={NotFound}/>
+
+                  </div>}
+
               </Switch>
-          </div>
-      </Router>
-  );
+          </Router>
+      </div>
+
+
+  )
 }
 
 export default App;

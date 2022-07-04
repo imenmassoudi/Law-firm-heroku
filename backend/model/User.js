@@ -13,14 +13,17 @@ const userSchema = new Schema({
     nom: {
         type: String,
         required: true,
-        trim: true,
         minlength: 3
     },
     prenom: {
         type: String,
         required: true,
-        trim: true,
         minlength: 3
+    },
+    mdp: {
+        type: String,
+        required: true,
+        minlength: 8
     }
 }, {
     timestamps: true, //when it was created

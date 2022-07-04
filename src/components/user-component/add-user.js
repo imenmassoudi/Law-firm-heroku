@@ -5,6 +5,7 @@ const AddUser = (refresh) => {
     const [username,setUserName] = useState("");
     const [nom,setNom] = useState("");
     const [prenom,setPrenom] = useState("");
+    const [mdp,setMdp] = useState("");
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -13,21 +14,25 @@ const AddUser = (refresh) => {
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
-        const user = {username,nom,prenom};
+        const user = {username,nom,prenom,mdp};
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
+        else{
+            fetch('http://localhost:5000/users/add',{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body: JSON.stringify(user)
+            }).then(() => {console.log("new blog added");
+                handleClose();
+                refresh();
+                // setX(x+1);
+            })
+        }
         setValidated(true);
-        fetch('http://localhost:5000/users/add',{
-            method:"POST",
-            headers:{"Content-Type":"application/json"},
-            body: JSON.stringify(user)
-        }).then(() => {console.log("new blog added");
-            handleClose();
-            refresh();
-           // setX(x+1);
-        })
+
+
     };
   return(
       <div className="row">
@@ -66,6 +71,14 @@ const AddUser = (refresh) => {
                                             onChange={(e) => setPrenom(e.target.value)}/>
                               <Form.Control.Feedback type="invalid">
                                   Le prénom est obligatoire!
+                              </Form.Control.Feedback>
+                          </Form.Group>
+                          <Form.Group className="mb-3" controlId="formBasicPassword">
+                              <Form.Label>Mot de passe</Form.Label>
+                              <Form.Control type="password" placeholder="mot de passe ..." required
+                                            onChange={(e) => setMdp(e.target.value)}/>
+                              <Form.Control.Feedback type="invalid">
+                                  Le mot de passe est obligatoire!
                               </Form.Control.Feedback>
                           </Form.Group>
                           <hr/>
