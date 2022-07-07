@@ -4,9 +4,12 @@ import User from "./components/user-component/User";
 import Header from "./Header";
 import Menu from "./Menu";
 import NotFound from "./components/not-found/not-found";
-import Login from "./components/Login-component/Login";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {isExpired} from "react-jwt";
+import Tribunaux from "./components/tribunaux-component/Tribunaux";
+import Services from "./components/tribunaux-component/services-component/Services";
+import Login from "./components/Login-component/Login";
+
 function App() {
     const [currentUser, setCurrentUser] = useState("");
     const history = useHistory()
@@ -45,9 +48,11 @@ if(redirctTo){
                       <Menu />
                       <Header/>
                       <Route exact path="/user" component={User}/>
-                      <Route exact path="*" component={NotFound}/>
 
+                      <Route exact path="/tribunaux" component={Tribunaux}/>
+                      <Route exact path="/services/:id" component={Services}/>
                   </div>}
+                  <Route exact path="*" component={NotFound}/>
 
               </Switch>
           </Router>

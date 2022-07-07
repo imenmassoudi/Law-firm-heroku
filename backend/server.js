@@ -20,8 +20,12 @@ mongoose
 
 
 const usersRouter = require('./routes/users');
+const tribRouter = require('./routes/tribunaux');
+const serviceRouter = require('./routes/services');
 
 app.use('/users', usersRouter);
+app.use('/tribunaux', tribRouter);
+app.use('/tribunaux/services', serviceRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
