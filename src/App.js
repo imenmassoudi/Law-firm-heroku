@@ -9,6 +9,10 @@ import {isExpired} from "react-jwt";
 import Tribunaux from "./components/tribunaux-component/Tribunaux";
 import Services from "./components/tribunaux-component/services-component/Services";
 import Login from "./components/Login-component/Login";
+import Collaborateur from "./components/collaborateur-component/Collaborateur";
+import Greffier from "./components/greffier-component/Greffier";
+import Primegreffier from "./components/primegreffier-component/Primegreffier";
+import Typedossier from "./components/typedossier-component/Typedossier";
 
 function App() {
     const [currentUser, setCurrentUser] = useState("");
@@ -26,7 +30,7 @@ function App() {
                     setRedirctTo(false)
                     setCurrentUser(user);
 
-                    alert("ahaha"+user)
+               
                 }
 
             }
@@ -51,6 +55,10 @@ if(redirctTo){
 
                       <Route exact path="/tribunaux" component={Tribunaux}/>
                       <Route exact path="/services/:id" component={Services}/>
+                      <Route exact path="/collaborateur" component={Collaborateur}/>
+                      <Route exact path="/greffier" component={Greffier}/>
+                      <Route exact path="/primegreffier" component={Primegreffier}/>
+                      <Route exact path="/typedossier" component={Typedossier}/>
                   </div>}
                   <Route exact path="*" component={NotFound}/>
 
