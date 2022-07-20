@@ -58,8 +58,8 @@ const User = () => {
                                         <th style={{textAlign:"center"}}>Nom d'utilisateur</th>
                                         <th style={{textAlign:"center"}}>Nom</th>
                                         <th style={{textAlign:"center"}}>Prenom</th>
-                                        <th style={{textAlign:"center"}}>Actions</th>
-                                        <th style={{textAlign:"center"}}>Actions</th>
+                                        <th style={{textAlign:"center"}}>Modifier</th>
+                                        <th style={{textAlign:"center"}}>Supprimer</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -80,15 +80,7 @@ const User = () => {
 
                                         ))}
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th style={{textAlign:"center"}}>Nom d'utilisateur</th>
-                                        <th style={{textAlign:"center"}}>Nom</th>
-                                        <th style={{textAlign:"center"}}>Prenom</th>
-                                        <th style={{textAlign:"center"}}>Actions</th>
-                                        <th style={{textAlign:"center"}}>Actions</th>
-                                    </tr>
-                                    </tfoot>
+                                                                    
                                 </table>
                             </div>
 

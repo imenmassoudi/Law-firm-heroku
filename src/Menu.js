@@ -26,7 +26,7 @@ const Menu = () => {
                             <li className="nav-header">Gestion des utilisateurs</li>
                             <li className="nav-item">
                                 <Link to="/user" className="nav-link">
-                                    <i className="nav-icon fas fa-edit" />
+                                    <i className="nav-icon fas fa-angellist" />
                                     <p>Utilisateurs</p>
                                 </Link>
                             </li>
@@ -50,7 +50,7 @@ const Menu = () => {
                                 <li className="nav-header">greffier</li>
                                 <li className="nav-item">
                                     <Link to="/greffier" className="nav-link">
-                                        <i className="nav-icon fas fa-edit" />
+                                        <i className="nav-icon fas fa-cogs" />
                                         <p>liste des Greffiers</p>
                                     </Link>
                                 </li>
@@ -69,6 +69,31 @@ const Menu = () => {
                                         <p>type dossier</p>
                                     </Link>
                                 </li>
+                                <li className='nav-item'>
+                                     <Link to='/param_global' className='nav-link'>
+                                         <i class='nav-icon fas fa-cogs'></i>
+                                        <p>Parametre Global</p>
+                                     </Link>
+                                 </li>
+                                <li className='nav-item'>
+                                    <Link to='/honoraire_extra' className='nav-link'>
+                                      <i class='nav-icon fas fa-sliders-h'></i>
+                                      <p>Honoraire en extra</p>
+                                 </Link>
+                                </li>
+                                 <li className='nav-item'>
+                                     <Link to='/recette_finance' className='nav-link'>
+                                       <i class='nav-icon fas fa-file-invoice-dollar'></i>
+                                        <p>Recette de Finance</p>
+                                    </Link>
+                                 </li>
+                                 <li className='nav-item'>
+                                  <Link to='/timbre' className='nav-link'>
+                                    <i class='nav-icon fas fa-mail-bulk'></i>
+                                    <p>Timbre</p>
+                                  </Link>
+                              </li>
+                           
                                 
                           
                         </ul>

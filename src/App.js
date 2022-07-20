@@ -13,7 +13,10 @@ import Collaborateur from "./components/collaborateur-component/Collaborateur";
 import Greffier from "./components/greffier-component/Greffier";
 import Primegreffier from "./components/primegreffier-component/Primegreffier";
 import Typedossier from "./components/typedossier-component/Typedossier";
-
+import ParamGlobal from "./components/Paramatre-component/ParamGlobal";
+import HonoraireExtra from './components/Paramatre-component/HonoraireExtra';
+import RecetteFinance from './components/Paramatre-component/RecetteFinance';
+import Timbre from './components/Paramatre-component/Timbre';
 function App() {
     const [currentUser, setCurrentUser] = useState("");
     const history = useHistory()
@@ -59,6 +62,10 @@ if(redirctTo){
                       <Route exact path="/greffier" component={Greffier}/>
                       <Route exact path="/primegreffier" component={Primegreffier}/>
                       <Route exact path="/typedossier" component={Typedossier}/>
+                      <Route exact path='/param_global' component={ParamGlobal} />
+                      <Route exact path='/honoraire_extra' component={HonoraireExtra} />
+                      <Route exact path='/recette_finance' component={RecetteFinance} />
+                      <Route exact path='/timbre' component={Timbre} />
                   </div>}
                   <Route exact path="*" component={NotFound}/>
 

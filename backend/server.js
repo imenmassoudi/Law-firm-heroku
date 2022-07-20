@@ -43,6 +43,9 @@ const typedossiersRouter = require('./routes/typedossiers');
 
 app.use('/typedossiers', typedossiersRouter);
 
+const parametreRouter = require('./routes/parametre');
+app.use('/parametre', parametreRouter);
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
