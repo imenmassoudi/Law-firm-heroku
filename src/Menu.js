@@ -69,6 +69,14 @@ const Menu = () => {
                                         <p>type dossier</p>
                                     </Link>
                                 </li>
+
+                                <li className="nav-item">
+                                    <Link to="/emplacement" className="nav-link">
+                                        <i className="nav-icon fas fa-edit" />
+                                        <p>emplacement dossier</p>
+                                    </Link>
+                                </li>
+                                
                                 <li className='nav-item'>
                                      <Link to='/param_global' className='nav-link'>
                                          <i class='nav-icon fas fa-cogs'></i>
