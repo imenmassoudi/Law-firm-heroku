@@ -25,7 +25,7 @@ const Services = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                alert(params.id)
+             
                 fetch('http://localhost:5000/tribunaux/services/'+params.id,{
                     headers: {
                         'Content-Type': 'application/json',

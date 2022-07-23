@@ -39,7 +39,7 @@ const Login = () => {
             localStorage.setItem('user', data.username)
             window.location.href = '/user'
 
-            alert('Login successful' + data.token)
+           
         } else {
             alert('Please check your username and password')
         }
@@ -55,7 +55,7 @@ const Login = () => {
                     </div>
                     <div className='card-body'>
                         <p className='login-box-msg'>
-                            Signnnnnnnnn in to start your session
+                            Sign in to start your session
                         </p>
 
                         <form onSubmit={handleSubmit}>

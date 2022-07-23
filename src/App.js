@@ -9,7 +9,15 @@ import {isExpired} from "react-jwt";
 import Tribunaux from "./components/tribunaux-component/Tribunaux";
 import Services from "./components/tribunaux-component/services-component/Services";
 import Login from "./components/Login-component/Login";
-
+import Collaborateur from "./components/collaborateur-component/Collaborateur";
+import Greffier from "./components/greffier-component/Greffier";
+import Primegreffier from "./components/primegreffier-component/Primegreffier";
+import Typedossier from "./components/typedossier-component/Typedossier";
+import Emplacement from "./components/emplacementdossier-component/Emplacement";
+import ParamGlobal from "./components/Paramatre-component/ParamGlobal";
+import HonoraireExtra from './components/Paramatre-component/HonoraireExtra';
+import RecetteFinance from './components/Paramatre-component/RecetteFinance';
+import Timbre from './components/Paramatre-component/Timbre';
 function App() {
     const [currentUser, setCurrentUser] = useState("");
     const history = useHistory()
@@ -26,7 +34,7 @@ function App() {
                     setRedirctTo(false)
                     setCurrentUser(user);
 
-                    alert("ahaha"+user)
+               
                 }
 
             }
@@ -51,6 +59,15 @@ if(redirctTo){
 
                       <Route exact path="/tribunaux" component={Tribunaux}/>
                       <Route exact path="/services/:id" component={Services}/>
+                      <Route exact path="/collaborateur" component={Collaborateur}/>
+                      <Route exact path="/greffier" component={Greffier}/>
+                      <Route exact path="/primegreffier" component={Primegreffier}/>
+                      <Route exact path="/typedossier" component={Typedossier}/>
+                      <Route exact path="/emplacement" component={Emplacement}/>
+                      <Route exact path='/param_global' component={ParamGlobal} />
+                      <Route exact path='/honoraire_extra' component={HonoraireExtra} />
+                      <Route exact path='/recette_finance' component={RecetteFinance} />
+                      <Route exact path='/timbre' component={Timbre} />
                   </div>}
                   <Route exact path="*" component={NotFound}/>
 

@@ -27,6 +27,25 @@ app.use('/users', usersRouter);
 app.use('/tribunaux', tribRouter);
 app.use('/tribunaux/services', serviceRouter);
 
+const collaborateursRouter = require('./routes/collaborateurs');
+
+app.use('/collaborateurs', collaborateursRouter);
+
+const greffiersRouter = require('./routes/greffiers');
+
+app.use('/greffiers', greffiersRouter);
+
+const primegreffiersRouter = require('./routes/primegreffiers');
+
+app.use('/primegreffiers', primegreffiersRouter);
+
+const typedossiersRouter = require('./routes/typedossiers');
+
+app.use('/typedossiers', typedossiersRouter);
+
+const parametreRouter = require('./routes/parametre');
+app.use('/parametre', parametreRouter);
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
