@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EmplacementSchema = new Schema({
-    
-    libelle: {
+        libelle: {
         type: String,
         required: true
     },

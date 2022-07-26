@@ -23,11 +23,18 @@ const Menu = () => {
                     </div>
                     <nav className="mt-2">
                         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <li className="nav-header">Gestion des utilisateurs</li>
+                            <li className="nav-header">Gestion des utilisateurs </li>
                             <li className="nav-item">
                                 <Link to="/user" className="nav-link">
-                                    <i className="nav-icon fas fa-angellist" />
+                                    <i className="nav-icon fa fa-user" />
                                     <p>Utilisateurs</p>
+                                </Link>
+                            </li>
+                            <li className="nav-header">Gestion des clients</li>
+                            <li className="nav-item">
+                                <Link to="/clients" className="nav-link">
+                                    <i className="nav-icon fa fa-user" />
+                                    <p>Clients</p>
                                 </Link>
                             </li>
 
@@ -64,15 +71,27 @@ const Menu = () => {
                                 </li>
                                 <li className="nav-header">dossier</li>
                                 <li className="nav-item">
-                                    <Link to="/typedossier" className="nav-link">
+                                    <Link to="/dossiersList" className="nav-link">
+                                        <i className="nav-icon fas fa-archive" />
+                                        <p>Tous les dossiers</p>
+                                    </Link>
+                                </li>
+                            <li className="nav-item">
+                                    <Link to="/dossier" className="nav-link">
                                         <i className="nav-icon fas fa-edit" />
+                                        <p>Créer dossier</p>
+                                    </Link>
+                                </li>
+                            <li className="nav-item">
+                                    <Link to="/typedossier" className="nav-link">
+                                        <i className="nav-icon fas fa-file" />
                                         <p>type dossier</p>
                                     </Link>
                                 </li>
 
                                 <li className="nav-item">
                                     <Link to="/emplacement" className="nav-link">
-                                        <i className="nav-icon fas fa-edit" />
+                                        <i className="nav-icon fas fa-question-circle" />
                                         <p>emplacement dossier</p>
                                     </Link>
                                 </li>

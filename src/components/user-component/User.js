@@ -9,6 +9,7 @@ const User = () => {
     const history = useHistory()
     const [x, setX] = useState(1);
     const [data, setData] = useState([]);
+    const [searchTerm,setSearchTerm] = useState("")
     useEffect(() => {
         const token = localStorage.getItem('token')
 
@@ -52,6 +53,17 @@ const User = () => {
                             </div>
 
                             <div className="card-body">
+                                <p style={{float:"right"}}>
+                                    <div className="input-group input-group-sm mb-3 right floated " >
+
+                                        <input type="text" className="form-control-sm" aria-label="Small" onChange={event => {setSearchTerm(event.target.value)}}
+                                               aria-describedby="inputGroup-sizing-sm" placeholder="chercher..." style={{borderTop:"none",borderRight:"none",borderLeft:"none"}}/>
+                                        <div className="input-group-prepend" >
+                                            <span className="input-group-text" id="inputGroup-sizing-sm" ><i className="fa fa-search"/></span>
+                                        </div>
+                                    </div>
+
+                                </p>
                                 <table id="example2" className="table table-bordered table-hover">
                                     <thead>
                                     <tr>
@@ -63,7 +75,15 @@ const User = () => {
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        {data.map((data) => (
+                                        {data.filter((data)=>{
+                                            if(searchTerm === ""){
+                                                return data
+                                            }else  {if (data.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                                ( data.nom.toLowerCase().includes(searchTerm.toLowerCase()))||
+                                                (  data.prenom.toLowerCase().includes(searchTerm.toLowerCase()))) {
+                                                return data
+                                            } }
+                                        }).map((data) => (
                                             <tr key={data._id}>
                                                 <td style={{textAlign:"center"}}>{data.username}</td>
                                                 <td style={{textAlign:"center"}}>{data.nom}</td>

@@ -27,7 +27,19 @@ const DossierSchema = new Schema({
     },
     numAffaire: {
         type: String,
-    }
+    },
+    idClient: {
+        type:String,
+        required:true
+    },
+    dateCreation: {
+        type:String,
+        required:true
+    },
+    dateModification: {
+        type:String,
+    },
+
 
 })
 

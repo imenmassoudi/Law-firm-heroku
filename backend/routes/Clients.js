@@ -9,6 +9,12 @@ router.route('/').get((req, res)=> {
         .then(client => res.json(client))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+//get by id
+router.route('/:id').get((req, res)=> {
+    Clients.findOne({_id:req.params.id}) //mongoose method
+        .then(client => res.json(client))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 //findone
 router.route('/find/:nom').get(async (req, res) => {
     const nomr = req.body.nomr;

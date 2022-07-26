@@ -49,13 +49,13 @@ const Login = () => {
             <div className='login-box'>
                 <div className='card card-outline card-primary'>
                     <div className='card-header text-center'>
-                        <a href='../../index2.html' className='h1'>
-                            <b>Admin</b>LTE
+                        <a  className='h1'>
+                            <b>Login</b>
                         </a>
                     </div>
                     <div className='card-body'>
                         <p className='login-box-msg'>
-                            Sign in to start your session
+                            Connectez-vous
                         </p>
 
                         <form onSubmit={handleSubmit}>
@@ -86,38 +86,21 @@ const Login = () => {
                                 </div>
                             </div>
                             <div className='row'>
-                                <div className='col-8'>
+                                <div className='col-7'>
                                     <div className='icheck-primary'>
                                         <input type='checkbox' id='remember' />
-                                        <label htmlFor='remember'>Remember Me</label>
+                                        <label htmlFor='remember'>Se souvenir de moi</label>
                                     </div>
                                 </div>
-                                <div className='col-4'>
+                                <div className='col-5'>
                                     <button type='submit' className='btn btn-primary btn-block'>
-                                        Sign In
+                                        Login
                                     </button>
                                 </div>
                             </div>
                         </form>
 
-                        <div className='social-auth-links text-center mt-2 mb-3'>
-                            <a href='#' className='btn btn-block btn-primary'>
-                                <i className='fab fa-facebook mr-2'></i> Sign in using Facebook
-                            </a>
-                            <a href='#' className='btn btn-block btn-danger'>
-                                <i className='fab fa-google-plus mr-2'></i> Sign in using
-                                Google+
-                            </a>
-                        </div>
 
-                        <p className='mb-1'>
-                            <a href='forgot-password.html'>I forgot my password</a>
-                        </p>
-                        <p className='mb-0'>
-                            <a href='register.html' className='text-center'>
-                                Register a new membership
-                            </a>
-                        </p>
                     </div>
                 </div>
             </div>

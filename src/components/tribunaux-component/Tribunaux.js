@@ -11,6 +11,7 @@ const Tribunaux = () => {
     const history = useHistory()
     const [x,setX] = useState(1);
     const [data,setData]= useState([]);
+    const [searchTerm,setSearchTerm] = useState("")
     const p = "/services/"
     useEffect(() => {
         const token = localStorage.getItem('token')
@@ -49,10 +50,27 @@ const Tribunaux = () => {
             <div className="card " style={{marginLeft:"250px",width:"800px"}}>
                 <div className="card-header" style={{backgroundColor:"rgb(209 203 183)",color:"white"}}>
                     <h3 className="card-title" >Tribunaux</h3>
+                    <p style={{float:"right"}}>
+                        <div className="input-group input-group-sm mb-3 right floated " >
+
+                            <input type="text" className="form-control-sm" aria-label="Small" onChange={event => {setSearchTerm(event.target.value)}}
+                                   aria-describedby="inputGroup-sizing-sm" placeholder="chercher..." style={{borderTop:"none",borderRight:"none",borderLeft:"none"}}/>
+                            <div className="input-group-prepend" >
+                                <span className="input-group-text" id="inputGroup-sizing-sm" ><i className="fa fa-search"/></span>
+                            </div>
+                        </div>
+
+                    </p>
                 </div>
 <br/>
                 <div className="row" >
-                    {data.map((data) => (
+                    {data.filter((data)=>{
+                        if(searchTerm === ""){
+                            return data
+                        }else  {if (data.lieu.toLowerCase().includes(searchTerm.toLowerCase())) {
+                            return data
+                        } }
+                    }).map((data) => (
                         <div className="col-lg-3 col-6" key={data._id} style={{marginLeft:"20px"}}>
                             <div className="small-box " style={{backgroundColor:"#c4c6c7"}}>
                                 <div className="inner">

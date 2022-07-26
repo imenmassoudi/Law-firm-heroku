@@ -53,9 +53,6 @@ const Client = () => {
                         <div className="card-header">
                             <h3 className="card-title">Liste des client</h3>
                             <AddClient refresh={refresh} clientsList={data}/>
-
-
-
                         </div>
 
                         <div className="card-body">

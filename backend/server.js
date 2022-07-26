@@ -21,11 +21,19 @@ mongoose
 
 const usersRouter = require('./routes/users');
 const tribRouter = require('./routes/tribunaux');
+const clientRouter = require('./routes/clients');
 const serviceRouter = require('./routes/services');
+const emplacementRouter = require('./routes/emplacements');
+const dossierRouter = require('./routes/dossiers');
+const archiveRouter = require('./routes/archives');
 
 app.use('/users', usersRouter);
 app.use('/tribunaux', tribRouter);
 app.use('/tribunaux/services', serviceRouter);
+app.use('/clients', clientRouter);
+app.use('/emplacements', emplacementRouter);
+app.use('/dossiers', dossierRouter);
+app.use('/archives', archiveRouter);
 
 const collaborateursRouter = require('./routes/collaborateurs');
 

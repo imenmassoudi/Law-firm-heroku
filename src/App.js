@@ -18,6 +18,9 @@ import ParamGlobal from "./components/Paramatre-component/ParamGlobal";
 import HonoraireExtra from './components/Paramatre-component/HonoraireExtra';
 import RecetteFinance from './components/Paramatre-component/RecetteFinance';
 import Timbre from './components/Paramatre-component/Timbre';
+import Client from "./components/Client-component/Client";
+import ReactTabs from "./components/Dossier-component/Dossier";
+import Dossiers from "./components/List-dossiers-component/Dossiers";
 function App() {
     const [currentUser, setCurrentUser] = useState("");
     const history = useHistory()
@@ -68,6 +71,9 @@ if(redirctTo){
                       <Route exact path='/honoraire_extra' component={HonoraireExtra} />
                       <Route exact path='/recette_finance' component={RecetteFinance} />
                       <Route exact path='/timbre' component={Timbre} />
+                      <Route exact path='/clients' component={Client} />
+                      <Route exact path='/dossier' component={ReactTabs} />
+                      <Route exact path='/dossiersList' component={Dossiers} />
                   </div>}
                   <Route exact path="*" component={NotFound}/>
 

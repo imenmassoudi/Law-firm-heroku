@@ -11,6 +11,12 @@ router.route('/').get(protect,(req, res)=> {
         .then(Emplacements => res.json(Emplacements))
         .catch(err => res.status(400).json('Error: ' + err));
 });
+//get empl
+router.route('/:id').get((req, res)=> {
+    Emplacement.findOne({_id:req.params.id}) //mongoose method
+        .then(Emplacements => res.json(Emplacements))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 
 //http post
