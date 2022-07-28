@@ -33,7 +33,7 @@ const Menu = () => {
                             <li className="nav-header">Gestion des clients</li>
                             <li className="nav-item">
                                 <Link to="/clients" className="nav-link">
-                                    <i className="nav-icon fa fa-user" />
+                                    <i className="nav-icon fa fa-user-friends" />
                                     <p>Clients</p>
                                 </Link>
                             </li>

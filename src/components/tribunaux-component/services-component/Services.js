@@ -77,9 +77,9 @@ const Services = () => {
                             <tbody>
                             {data.map((data) => (
                                 <tr>
-                                    <td>{data.libelle}
-                                        <DeleteService refresh={refresh} id={data._id} />
-                                        <UpdateService refresh={refresh} id={data._id} idTr={data.idTrib} data={data}/>
+                                    <td style={{display:"flex"}}>{data.libelle}
+                                            <DeleteService refresh={refresh} id={data._id}/>&nbsp;
+                                          <UpdateService refresh={refresh} id={data._id} idTr={data.idTrib} data={data}/>
 
                                     </td>
                                     {data.joursAud.map((j) =>

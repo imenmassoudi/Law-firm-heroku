@@ -73,16 +73,22 @@ const Tribunaux = () => {
                     }).map((data) => (
                         <div className="col-lg-3 col-6" key={data._id} style={{marginLeft:"20px"}}>
                             <div className="small-box " style={{backgroundColor:"#c4c6c7"}}>
-                                <div className="inner">
-                                    <h4 style={{color:"white",display:"inline-block"}}>
-                                        {data.lieu} &nbsp;
-                                        <UpdateTribunal refresh={refresh} id={data._id} data={data}/>
+                                <div className="inner" >
 
-                                    </h4>
+                                    <span className="inner" style={{display:"flex"}}>
+                                        <h5 style={{color:"white"}}>
+                                            {data.lieu} &nbsp;</h5>
+                                        <span style={{color:"white"}}>
+                                            <UpdateTribunal refresh={refresh} id={data._id} data={data}/>
 
-                                    <p style={{color:"white"}}>
-                                        <DeleteTribunal refresh={refresh} id={data._id} />
-                                    </p>
+                                        </span>
+                                        <span style={{color:"white"}}>
+                                            <DeleteTribunal refresh={refresh} id={data._id} />
+                                        </span>
+                                    </span>
+                                    <br/>
+
+
                                 </div>
                                 <div className="icon">
                                     <i className="fas fa-building"/>

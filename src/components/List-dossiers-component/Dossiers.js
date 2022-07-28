@@ -1,11 +1,12 @@
 import {useHistory} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import jwt from "jwt-decode";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ReclasserDossier from "./reclasser-dossier-component";
 import Archive from "../Archive-component/Archive";
 import DeleteDossier from "./Supprimer-dossier";
-import Printer, { print } from "react-pdf-print";
+import ReactToPrint from "react-to-print";
+import PrintComponent from "../print/PrintComponent";
 
 const Dossiers = () => {
     const ids = ["1"];
@@ -43,7 +44,9 @@ const Dossiers = () => {
         })
         return nom
     }
-     // const dispatch = useDispatch();
+    let componentRef = useRef();
+
+    // const dispatch = useDispatch();
      // const stableDispatch = useCallback(dispatch, []);
 
     // useEffect(() => {
@@ -59,7 +62,6 @@ const Dossiers = () => {
     //     //     document.body.removeChild(script);
     //     // }
     // }, []);
-
     useEffect(() => {
 
         const token = localStorage.getItem('token')
@@ -100,9 +102,20 @@ const Dossiers = () => {
         <div className="content-wrapper">
             <div className="row">
                 <div className="col-12">
-                    <div className="card">
+
+                    <div className="card" ref={el =>(componentRef=el)}>
                         <div className="card-header">
                             <h3 className="card-title">Liste des dossiers</h3>
+                           <span style={{float:"right"}}>
+                                <ReactToPrint
+                                    trigger={() => {
+                                        // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
+                                        // to the root node of the returned component as it will be overwritten.
+                                        return <a href="#">Imprimer la liste</a>;
+                                    }}
+                                    content={() => componentRef}
+                                />
+                           </span>
                         </div>
                         <div className="card-body">
                             <p style={{float:"right"}}>
@@ -185,12 +198,11 @@ const Dossiers = () => {
                         </div>
                     </div>
 
-
                 </div>
-
             </div>
 
         </div>
-    )
+
+)
 }
 export default Dossiers

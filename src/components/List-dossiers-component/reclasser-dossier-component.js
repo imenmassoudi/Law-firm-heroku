@@ -101,7 +101,7 @@ const ReclasserDossier = ({refresh,id}) => {
                             <Select options={options}   onChange={(e)=>setEmplacement(e.value)}  />
 
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Nom d'utilisateur</Form.Label>
+                                <Form.Label>Date d'effet</Form.Label>
                                 <Form.Control type="date" defaultValue={date}
                                               onChange={(e) => setDate(e.target.value)}/>
                                 <Form.Text className="text-muted">

@@ -9,12 +9,53 @@ import jwt from "jwt-decode";
 const AddDossier = () => {
     const [data,setData] = useState("");
     const [options,setOptions] = useState([]);
-    const [mission,setMission] = useState([]);
-    const [typeDossier,setTypeDossier] = useState([]);
+    const [optionsE,setOptionsE] = useState([]);
+    const [optionsL,setOptionsL] = useState([]);
+    const [optionsS,setOptionsS] = useState([]);
+    const [mission,setMission] = useState("");
+    const [typeDossier,setTypeDossier] = useState("");
+    const [emplacement,setEmplacement] = useState("");
+    const [lieu,setLieu] = useState("");
+    const [service,setService] = useState("");
+    const [aff,setAff] = useState("");
+    const [observation,setObservation] = useState("");
+    const [code,setCode] = useState("");
 
+
+    function tribS(id){
+        const token = localStorage.getItem('token')
+
+        fetch('http://localhost:5000/tribunaux/services/'+id, {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": `Bearer ${token}`
+            },
+
+        }).then(res => {
+            return res.json();
+        })
+            .then(res => {
+                console.log("prforefr "+res)
+                let option = []
+                res.map((res) => {
+                    if (option.indexOf(res.libelle) === -1) {
+                        option.push({
+                            value: res._id,
+                            label: res.libelle,
+                        })
+                        setOptionsS(option)
+                    }
+
+                })
+            }).catch(err => {
+            console.log("errrrr");
+        })
+    }
     useEffect(()=>{
         const token = localStorage.getItem('token')
         const option = []
+        const optionE = []
+        const optionL = []
         if (token) {
             const Collaborateurs = jwt(token)
             if (!Collaborateurs) {
@@ -33,7 +74,7 @@ const AddDossier = () => {
                         res.map((res) => {
                             console.log(res)
                             console.log(option)
-                            if (option.indexOf(res.cin) === -1) {
+                            if (option.indexOf(res.libelle) === -1) {
                                 console.log("le")
                                 option.push({
                                     value: res._id,
@@ -46,6 +87,56 @@ const AddDossier = () => {
                     }).catch(err => {
                     console.log("errrrr");
                 })
+
+
+                fetch('http://localhost:5000/emplacements', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${token}`
+                    },
+
+                }).then(res => {
+                    return res.json();
+                })
+                    .then(res => {
+                        res.map((res) => {
+                            if (optionE.indexOf(res.libelle) === -1) {
+                                console.log("le")
+                                optionE.push({
+                                    value: res._id,
+                                    label: res.libelle,
+                                })
+                                setOptionsE(optionE)
+                            }
+
+                        })
+                    }).catch(err => {
+                    console.log("errrrr");
+                })
+                fetch('http://localhost:5000/tribunaux', {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Authorization": `Bearer ${token}`
+                    },
+
+                }).then(res => {
+                    return res.json();
+                })
+                    .then(res => {
+                        res.map((res) => {
+                            if (optionL.indexOf(res.lieu) === -1) {
+                                optionL.push({
+                                    value: res._id,
+                                    label: res.lieu,
+                                })
+                                setOptionsL(optionL)
+                            }
+
+                        })
+                    }).catch(err => {
+                    console.log("errrrr");
+                })
+
 
 
             }
@@ -76,6 +167,79 @@ const AddDossier = () => {
                             </Form.Control.Feedback>
                         </Form.Group>
 
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Emplacement</Form.Label>
+                            <Select options={optionsE} onChange={(e) => setEmplacement(e.value)} />
+
+                            </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Lieu</Form.Label>
+                            <Select options={optionsL} onChange=
+                                {(e) =>
+                                {
+                                    setLieu(e.value)
+                                    tribS(e.value)
+                                }
+
+
+                            } />
+
+                            </Form.Group>
+                    </Col>
+
+                </Row>
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Serivce</Form.Label>
+                            <Select options={optionsS} onChange={(e) => setService(e.value)}  />
+
+                            </Form.Group>
+                    </Col>
+
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Numéro affaire</Form.Label>
+                            <Form.Control type="text" placeholder="Entrer un numéro .." required minLength="3"
+                                          onChange={(e) => setAff(e.target.value)}/>
+                            <Form.Text className="text-muted">
+                                minimum 3 caractères
+                            </Form.Text>
+                            <Form.Control.Feedback type="invalid">
+                                Le champ  est obligatoire!
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+
+                </Row>
+
+                <Row>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Observation</Form.Label>
+                            <Form.Control type="text" placeholder="Entrer une observation .." required minLength="3"
+                                          onChange={(e) => setObservation(e.target.value)}/>
+                            <Form.Text className="text-muted">
+                                minimum 3 caractères
+                            </Form.Text>
+                            <Form.Control.Feedback type="invalid">
+                                Le champ  est obligatoire!
+                            </Form.Control.Feedback>
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <div className="form-group">
+                            <label >Code dossier</label>
+                            <input type="text" className="form-control"
+                                   placeholder="code"
+                                   onChange={(e) => setCode(e.target.value)}/>
+                        </div>
                     </Col>
                 </Row>
 
