@@ -2,13 +2,12 @@ import {useHistory} from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
 import jwt from "jwt-decode";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import ReclasserDossier from "./reclasser-dossier-component";
-import Archive from "../Archive-component/Archive";
-import DeleteDossier from "./Supprimer-dossier";
+
 import ReactToPrint from "react-to-print";
 import PrintComponent from "../print/PrintComponent";
+import AddSousDossier from "./add-sousDossier";
 
-const Dossiers = () => {
+const SousDossier = () => {
     const ids = ["1"];
 
     const history = useHistory()
@@ -26,7 +25,7 @@ const Dossiers = () => {
 
             .then((res) => {
 
-                    setEmplacement(res.libelle)
+                setEmplacement(res.libelle)
 
 
             })
@@ -36,18 +35,18 @@ const Dossiers = () => {
 
     function findClientByID(id)  {
         fetch('http://localhost:5000/clients/'+id)
-        .then((response) => response.json())
-        .then((res) => {
-            console.log(res)
-            setNom(res.nom)
-            setTel(res.tel)
-        })
+            .then((response) => response.json())
+            .then((res) => {
+                console.log(res)
+                setNom(res.nom)
+                setTel(res.tel)
+            })
         return nom
     }
     let componentRef = useRef();
 
     // const dispatch = useDispatch();
-     // const stableDispatch = useCallback(dispatch, []);
+    // const stableDispatch = useCallback(dispatch, []);
 
     // useEffect(() => {
     //     const script = document.createElement('script');
@@ -80,7 +79,7 @@ const Dossiers = () => {
                     },
                 })
                     .then(res => {
-                       return res.json();
+                        return res.json();
                     }).then(data =>
                 {
                     setData(data)
@@ -99,14 +98,14 @@ const Dossiers = () => {
     };
 
     return (
-        <div className="content-wrapper">
+        <div className="">
             <div className="row">
                 <div className="col-12">
 
                     <div className="card" ref={el =>(componentRef=el)}>
                         <div className="card-header">
                             <h3 className="card-title">Liste des dossiers</h3>
-                           <span style={{float:"right"}}>
+                            <span style={{float:"right"}}>
                                 <ReactToPrint
                                     trigger={() => {
                                         // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
@@ -130,7 +129,7 @@ const Dossiers = () => {
 
                             </p>
 
-                        <table id="example2" className="table table-bordered table-hover">
+                            <table id="example2" className="table table-bordered table-hover">
                                 <thead>
                                 <tr>
                                     <th style={{textAlign:"center"}}>Numéro affaire</th>
@@ -156,39 +155,36 @@ const Dossiers = () => {
                                         return data
                                     } }
                                 })
-                                .map((data, index) =>(
-                                    <tr key={data._id} >
-                                        <td style={{textAlign:"center"}}>{data.numAffaire}</td>
-                                        <td style={{textAlign:"center"}}>{data.lieu[0].lieu}</td>
-                                        <td style={{textAlign:"center"}}>{data.typeDs[0].libelle}</td>
-                                        <td style={{textAlign:"center"}}>
-                                            {data.lib[0].libelle}
+                                    .map((data, index) =>(
+                                        <tr key={data._id} >
+                                            <td style={{textAlign:"center"}}>{data.numAffaire}</td>
+                                            <td style={{textAlign:"center"}}>{data.lieu[0].lieu}</td>
+                                            <td style={{textAlign:"center"}}>{data.typeDs[0].libelle}</td>
+                                            <td style={{textAlign:"center"}}>
+                                                {data.lib[0].libelle}
 
-                                        </td>
-                                        <td style={{textAlign:"center"}}>
-                                            {data.clientC[0].nom}
+                                            </td>
+                                            <td style={{textAlign:"center"}}>
+                                                {data.clientC[0].nom}
 
-                                        </td>
-                                        <td style={{textAlign:"center"}}>
-                                            {data.clientC[0].tel}
+                                            </td>
+                                            <td style={{textAlign:"center"}}>
+                                                {data.clientC[0].tel}
 
-                                    </td>
-                                        <td style={{textAlign:"center"}}>{data.mission}</td>
-                                        <td style={{textAlign:"center"}}>
-                                            <p style={{textAlign:"center"}}>
-                                                <ButtonGroup className="mb-2">
-                                                    <ReclasserDossier refresh={refresh} id={data._id}/>
-                                                    <Archive refresh={refresh} idDossier={data._id}/>
-                                                    <DeleteDossier refresh={refresh} id={data._id} username={data.username}/>
+                                            </td>
+                                            <td style={{textAlign:"center"}}>{data.mission}</td>
+                                            <td style={{textAlign:"center"}}>
+                                                <p style={{textAlign:"center"}}>
+                                                    <ButtonGroup className="mb-2">
+                                                        <AddSousDossier  refresh={refresh} />
+                                                    </ButtonGroup>
+                                                </p>
 
-                                                </ButtonGroup>
-                                            </p>
+                                            </td>
 
-                                        </td>
+                                        </tr>
 
-                                    </tr>
-
-                                ))}
+                                    ))}
 
 
                                 </tbody>
@@ -203,6 +199,6 @@ const Dossiers = () => {
 
         </div>
 
-)
+    )
 }
-export default Dossiers
+export default SousDossier

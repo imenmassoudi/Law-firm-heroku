@@ -1,5 +1,6 @@
 import {Button, Form, Modal} from "react-bootstrap";
 import {useState} from "react";
+import {Global} from "@emotion/react";
 
 const AddUser = (refresh) => {
     const [username,setUserName] = useState("");
@@ -15,6 +16,7 @@ const AddUser = (refresh) => {
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
+
         const form = event.currentTarget;
         const user = {username,nom,prenom,mdp};
         if (form.checkValidity() === false || mdp !== mdpConf) {

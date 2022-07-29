@@ -2,11 +2,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Select from "react-select";
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import jwt from "jwt-decode";
+import { useGlobalState } from 'use-global-state-react';
 
-const AddDossier = () => {
+const AddDossier = ({idc}) => {
+
     const [data,setData] = useState("");
     const [options,setOptions] = useState([]);
     const [optionsE,setOptionsE] = useState([]);
@@ -20,6 +22,8 @@ const AddDossier = () => {
     const [aff,setAff] = useState("");
     const [observation,setObservation] = useState("");
     const [code,setCode] = useState("");
+    const [x, setX] = useState(1);
+    const [validated, setValidated] = useState(false);
 
 
     function tribS(id){
@@ -140,10 +144,51 @@ const AddDossier = () => {
 
 
             }
-        } },[])
+        } },[x])
+    const refresh = () => {
+        setX(x + 1);
+    };
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        let idClient = idc
+        let numAffaire = aff
+        const dossier = {typeDossier,
+            mission,
+            emplacement,
+            lieu,
+            service,
+            observation,
+            numAffaire,
+        idClient};
+        if (form.checkValidity() === false ) {
+
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        else{
+
+            fetch('http://localhost:5000/dossiers/addDonnees',{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body: JSON.stringify(dossier)
+            }).then(res => {
+                return res.json();
+            }).then(data =>
+            {
+                alert("dossier ajouté")
+
+            })
+            event.preventDefault()
+
+        }
+        event.preventDefault()
+        setValidated(true);
+
+
+    };
 
     return(
-        <Form>
+        <Form onSubmit={handleSubmit}  validated={validated} >
 
             <Container>
                 <Row>
@@ -233,17 +278,13 @@ const AddDossier = () => {
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Col>
-                    <Col>
-                        <div className="form-group">
-                            <label >Code dossier</label>
-                            <input type="text" className="form-control"
-                                   placeholder="code"
-                                   onChange={(e) => setCode(e.target.value)}/>
-                        </div>
-                    </Col>
+
                 </Row>
 
             </Container>
+            <Button  type="submit" variant="secondary" size="sm" style={{float:"right"}}>
+                Valider dossier
+            </Button>
         </Form>
 
         )

@@ -6,6 +6,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import AddDossier from "./add-dossier";
+import Tache from "../tache-component/Tache";
+import Reglement from "../reglement-component/Reglement";
+import Collaborateurdossier from "../collaborateurdossier-component/Collaborateurdossier";
+import SousDossier from "../sousdossier-component/SousDossier";
+import Demandeur from "../demandeur-component/Demandeur";
 
 export default function ReactTabs() {
     const [username,setUserName] = useState("");
@@ -67,28 +72,24 @@ export default function ReactTabs() {
     const handleSubmit = (event) => {
         const form = event.currentTarget;
         const user = {username,nom,prenom,mdp};
-        if (form.checkValidity() === false || mdp !== mdpConf) {
-            if(mdp !== mdpConf){
-                setVerif("visible")
-            }
+        if (form.checkValidity() === false ) {
             //    alert("mdp: "+mdp+" "+mdpConf)
             event.preventDefault();
             event.stopPropagation();
         }
-        else{
+        else {
+            let idClient = id;
 
-            fetch('http://localhost:5000/users/add',{
-                method:"POST",
+        /*    fetch('http://localhost:5000/dossiers/'+id,{
+                method:"PUT",
                 headers:{"Content-Type":"application/json"},
-                body: JSON.stringify(user)
-            }).then(() => {console.log("new blog added");
-                handleClose();
-                refresh();
-                // setX(x+1);
-            })
-        }
-        setValidated(true);
+                body: JSON.stringify(idClient)
+            }).then(() => {console.log("updated");
 
+                // setX(x+1);
+            })*/
+            event.preventDefault()
+        }
 
     };
     const [tabKey, initTabKey] = useState('one')
@@ -109,6 +110,7 @@ export default function ReactTabs() {
                                                 .then((response) => response.json())
                                                 .then((data) => {
                                                     setData(data)
+                                                    setId(data._id)
                                                 })
                                         }}  />
                                     </Col>
@@ -191,22 +193,29 @@ export default function ReactTabs() {
                                     </Col>
                                 </Row>
                             </Container>
+                            <Button  type="submit" variant="secondary" size="sm" style={{float:"right"}}>
+                                Valider dossier
+                            </Button>
                         </Form>
-
+                    <Demandeur/>
                     </Tab>
                     <Tab eventKey="two" title="Données dossier">
-                        <AddDossier/>
+                        <AddDossier idc={id}/>
                     </Tab>
-                    <Tab eventKey="three" title="Tab 3">
-                        <p>Tab 3</p>
+                    <Tab eventKey="three" title="Tache">
+                        <Tache/>
                     </Tab>
-                    <Tab eventKey="four" title="Tab 4">
-                        <p>Tab 4</p>
+                    <Tab eventKey="four" title="Reglement">
+                        <Reglement/>
+                    </Tab>
+                    <Tab eventKey="five" title="Collaborateur">
+                        <Collaborateurdossier/>
+                    </Tab>
+                    <Tab eventKey="six" title="Sous dossier">
+                        <SousDossier/>
                     </Tab>
                 </Tabs>
-                <Button variant="secondary" size="lg">
-                    Valider dossier
-                </Button>
+
             </div>
         </div>
     )
