@@ -29,6 +29,9 @@ const AdversaireSchema = new Schema({
     adresseAvocat: {
         type: String,
     },
+    registredecommerce: {
+        type: String,
+    },
     idDossier:{
         type: String
     }

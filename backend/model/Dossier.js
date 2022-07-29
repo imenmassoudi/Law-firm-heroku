@@ -28,10 +28,6 @@ const DossierSchema = new Schema({
     numAffaire: {
         type: String,
     },
-    idClient: {
-        type:String,
-        required:true
-    },
     dateCreation: {
         type:String,
         required:true
@@ -39,8 +35,9 @@ const DossierSchema = new Schema({
     dateModification: {
         type:String,
     },
-
-
+    idClient: {
+        type:String
+    }
 })
 
 const Dossier = mongoose.model('Dossier', DossierSchema)

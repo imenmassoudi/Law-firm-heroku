@@ -70,6 +70,11 @@ const clientSchema = new Schema({
             required: true,
             unique: true
         },
+        idDossier: {
+            type: String,
+            required: true,
+            unique: true
+        },
 
     },
     {

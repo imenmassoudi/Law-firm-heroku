@@ -26,6 +26,17 @@ const serviceRouter = require('./routes/services');
 const emplacementRouter = require('./routes/emplacements');
 const dossierRouter = require('./routes/dossiers');
 const archiveRouter = require('./routes/archives');
+const demandeursRouter = require('./routes/demandeurs');
+const tacheRouter = require('./routes/taches');
+const honoraireRouter = require('./routes/honoraires');
+const ssDossierRouter = require('./routes/sousDossiers');
+const cRouter = require('./routes/collaborateursReg');
+
+const ReglementsRouter = require('./routes/reglements');
+app.use('/reglements', ReglementsRouter);
+app.use('/demandeur', demandeursRouter);
+app.use('/tache', tacheRouter);
+app.use('/reglementCollab', cRouter);
 
 app.use('/users', usersRouter);
 app.use('/tribunaux', tribRouter);
@@ -34,6 +45,8 @@ app.use('/clients', clientRouter);
 app.use('/emplacements', emplacementRouter);
 app.use('/dossiers', dossierRouter);
 app.use('/archives', archiveRouter);
+app.use('/honoraires', honoraireRouter);
+app.use('/sousdossier', ssDossierRouter);
 
 const collaborateursRouter = require('./routes/collaborateurs');
 

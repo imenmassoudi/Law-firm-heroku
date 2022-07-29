@@ -51,5 +51,9 @@ router.put('/:id', (req, res) => {
         });
 });
 
-
+router.route('/findCollab/:id').get(async (req, res) => {
+    const id = req.params.id;
+    const collab = await Collaborateur.findOne({_id:id})
+    res.json(collab)
+});
 module.exports = router;

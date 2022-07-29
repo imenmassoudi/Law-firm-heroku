@@ -23,7 +23,26 @@ router.route('/all').get((req, res)=> {
                     localField: 'client',
                     foreignField: '_id',
                     as: 'clientC'
-                }}]
+                }},
+            { "$addFields": { "typeD": { "$toObjectId": "$typeDossier" }}},
+            {
+                $lookup: {
+                    from: "typedossiers",
+                    localField: 'typeD',
+                    foreignField: '_id',
+                    as: 'typeDs'
+                }},
+            { "$addFields": { "trib": { "$toObjectId": "$lieu" }}},
+            {
+                $lookup: {
+                    from: "tribunals",
+                    localField: 'trib',
+                    foreignField: '_id',
+                    as: 'lieu'
+                }},
+
+
+        ]
 
         ).then(d=>res.json(d))
 })
@@ -54,11 +73,40 @@ router.route('/').get(protect,(req, res)=> {
 
 
 
+router.route('/addDonnees').post( (req, res) => {
+    const date_format = new Date();
+    const lieu = req.body.lieu;
+    const typeDossier = req.body.typeDossier
+    const mission = req.body.mission
+    const emplacement = req.body.emplacement
+    const service = req.body.service
+    const observation = req.body.observation
+    const numAffaire = req.body.numAffaire
+    const idClient = req.body.idClient
+    const dateCreation = date_format.getDate()+'/'+ (date_format.getMonth()+1)+'/'+date_format.getFullYear()
+    const dateModification = "not modified"
+    const newDossier = new Dossiers({
+        typeDossier,
+        mission,
+        emplacement,
+        lieu,
+        service,
+        observation,
+        numAffaire,
+        dateCreation,
+        dateModification,
+        idClient
+    });
+
+    newDossier.save()
+        .then(() => res.json(newDossier))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
 
 
 //http post
 router.route('/add').post( (req, res) => {
-    var date_format = new Date();
+    const date_format = new Date();
     const lieu = req.body.lieu;
     const typeDossier = req.body.typeDossier
     const mission = req.body.mission

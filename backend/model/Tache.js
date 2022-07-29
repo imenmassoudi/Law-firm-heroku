@@ -21,7 +21,6 @@ const tacheSchema = new Schema({
     },
     personneChargee: {
         type: String,
-        required: true
     },
     course: {
         type: String,

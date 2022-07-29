@@ -11,22 +11,8 @@ router.route('/').get((req, res)=> {
 });
 //http post
 router.route('/add').post( (req, res) => {
-    const lieu = req.body.lieu;
-    const typeDossier = req.body.typeDossier
-    const mission = req.body.mission
-    const emplacement = req.body.emplacement
-    const service = req.body.service
-    const observation = req.body.observation
-    const numAffaire = req.body.numAffaire
     const idDossier = req.body.idDossier
     const newDossier = new SousDossiers({
-        typeDossier,
-        mission,
-        emplacement,
-        lieu,
-        service,
-        observation,
-        numAffaire,
         idDossier});
 
     newDossier.save()
