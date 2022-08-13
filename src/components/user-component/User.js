@@ -19,7 +19,8 @@ const User = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/users', {
+                fetch('users', {
+                    mode:"no-cors",
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`

@@ -21,7 +21,8 @@ const Login = () => {
                     res.map(r => alert(r.username))
                     // setX(x+1);
                 })*/
-        const response = await fetch('http://localhost:5000/users/login', {
+        const response = await fetch('users/login', {
+            mode:"no-cors",
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
