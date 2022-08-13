@@ -77,6 +77,6 @@ if(process.env.NODE_ENV === 'production'){
 
 }
 
-app.listen(port, () => {
+app.listen(port,"firm-management-ensi.herokuapp.com", () => {
     console.log(`Server is running on port: ${port}`);
 });
