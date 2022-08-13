@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix Gestion_Cabinet_Avocats && npm run build --prefix Gestion_Cabinet_Avocats"
+    "start": "node server.js"
   },
   "engines": {
     "node": "16.x"
@@ -23,5 +22,10 @@
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }
