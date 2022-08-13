@@ -19,7 +19,7 @@ const User = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('https://firm-management-ensi.herokuapp.com/users', {
+                fetch('users', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
