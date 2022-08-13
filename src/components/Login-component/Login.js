@@ -26,8 +26,7 @@ const Login = () => {
             mode:"no-cors",
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'host':'https://firm-management-ensi.herokuapp.com/'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 username,

@@ -22,8 +22,7 @@ const User = () => {
                 fetch('users', {
                     headers: {
                         'Content-Type': 'application/json',
-                        "Authorization": `Bearer ${token}`,
-                        'host':'https://firm-management-ensi.herokuapp.com/'
+                        "Authorization": `Bearer ${token}`
                     },
                 })
                     .then(res => {
