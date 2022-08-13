@@ -21,7 +21,7 @@ const Login = () => {
                     res.map(r => alert(r.username))
                     // setX(x+1);
                 })*/
-        const response = await fetch('http://localhost:5000/users/login', {
+        const response = await fetch('https://firm-management-ensi.herokuapp.com/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
