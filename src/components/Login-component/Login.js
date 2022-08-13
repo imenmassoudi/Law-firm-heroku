@@ -21,7 +21,9 @@ const Login = () => {
                     res.map(r => alert(r.username))
                     // setX(x+1);
                 })*/
-        const response = await fetch('https://firm-management-ensi.herokuapp.com/users/login', {
+        const API = process.env.NODE_ENV === 'production' ? 'https://firm-management-ensi.herokuapp.com' : 'http://localhost:5000';
+
+        const response = await fetch(API+'/login', {
             mode:"no-cors",
             method: 'POST',
             headers: {

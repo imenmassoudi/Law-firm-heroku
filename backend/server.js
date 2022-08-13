@@ -68,7 +68,6 @@ const parametreRouter = require('./routes/parametre');
 app.use('/parametre', parametreRouter);
 
 //serve static assets
-
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('build'));
 

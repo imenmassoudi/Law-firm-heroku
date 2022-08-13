@@ -12,6 +12,7 @@ const User = () => {
     const [searchTerm,setSearchTerm] = useState("")
     useEffect(() => {
         const token = localStorage.getItem('token')
+        const API = process.env.NODE_ENV === 'production' ? 'https://firm-management-ensi.herokuapp.com' : 'http://localhost:5000';
 
         if (token) {
             const user = jwt(token)
@@ -19,7 +20,7 @@ const User = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('https://firm-management-ensi.herokuapp.com/users', {
+                fetch(API+'/users', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
