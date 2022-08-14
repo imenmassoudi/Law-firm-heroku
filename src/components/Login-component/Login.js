@@ -23,6 +23,7 @@ const Login = () => {
                 })*/
 
         const response = await fetch('https://backend-avocat.herokuapp.com/users/login', {
+            mode:'no-cors',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

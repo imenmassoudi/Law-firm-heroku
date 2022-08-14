@@ -20,6 +20,7 @@ const User = () => {
                 history.push('/login')
             } else {
                 fetch('https://backend-avocat.herokuapp.com/users', {
+                    mode:'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
