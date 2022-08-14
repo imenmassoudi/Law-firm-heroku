@@ -45,6 +45,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://firm-management-ensi.herokuapp.com/",
+
   "eslintConfig": {
     "extends": [
       "react-app",
