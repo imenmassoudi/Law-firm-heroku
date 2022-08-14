@@ -40,7 +40,9 @@ router.route('/add').post(async (req, res) => {
 
 //login
 router.route('/login').post(async (req, res) => {
-    const { username, pwd } = req.body
+   // const { username, pwd } = req.body
+    const username = req.body.username
+    const pwd = req.body.pwd
     console.log("aaaaa "+username+ "bbb"+pwd)
     // Check for user email
     const user = await User.findOne({ username })

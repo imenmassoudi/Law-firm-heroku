@@ -9,7 +9,7 @@ const Login = () => {
     const [data, setData] = useState(null)
 
     const handleSubmit = async (event) => {
-        //  alert(username)
+         alert(username)
         event.preventDefault()
 
         /*  const user = {username,pwd};
@@ -22,8 +22,7 @@ const Login = () => {
                     // setX(x+1);
                 })*/
 
-        const response = await fetch('users/login', {
-            mode:"no-cors",
+        const response = await fetch('http://localhost:5000/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
