@@ -19,8 +19,7 @@ const User = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('https://backend-avocat.herokuapp.com/users', {
-                    mode:'no-cors',
+                fetch('/users', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`

@@ -22,8 +22,7 @@ const Login = () => {
                     // setX(x+1);
                 })*/
 
-        const response = await fetch('https://backend-avocat.herokuapp.com/users/login', {
-            mode:'no-cors',
+        const response = await fetch('/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
