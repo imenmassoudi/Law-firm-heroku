@@ -10,6 +10,16 @@ const port = 5000 || process.env.PORT;
 app.use(cors());
 app.use(express.json());
 const uri = process.env.ATLAS_URI;
+//serve static assets
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('build'));
+
+    app.get('*',(req,res)=>{
+        res.sendFile(path.resolve(__dirname,'build','index.html'))
+    })
+
+}
+
 mongoose
     .connect(uri, {
         useNewUrlParser: true,
@@ -18,7 +28,7 @@ mongoose
     .then(() => console.log("Database connected!"))
     .catch(err => console.log(err));
 
-
+app.enable('trust proxy')
 const usersRouter = require('./routes/users');
 const tribRouter = require('./routes/tribunaux');
 const clientRouter = require('./routes/clients');
@@ -67,15 +77,6 @@ app.use('/typedossiers', typedossiersRouter);
 const parametreRouter = require('./routes/parametre');
 app.use('/parametre', parametreRouter);
 
-//serve static assets
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('build'));
-
-    app.get('*',(req,res)=>{
-            res.sendFile(path.resolve(__dirname,'build','index.html'))
-    })
-
-}
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
