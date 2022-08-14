@@ -1,2 +1,2 @@
 web: npm start
-web: node Gestion_Cabinet_Avocats/backend/server.js
+web: node backend/server.js
