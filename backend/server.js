@@ -29,20 +29,20 @@ mongoose
     .catch(err => console.log(err));
 
 app.enable('trust proxy')
-const usersRouter = require('./routes/users');
-const tribRouter = require('./routes/tribunaux');
-const clientRouter = require('./routes/clients');
-const serviceRouter = require('./routes/services');
-const emplacementRouter = require('./routes/emplacements');
-const dossierRouter = require('./routes/dossiers');
-const archiveRouter = require('./routes/archives');
-const demandeursRouter = require('./routes/demandeurs');
-const tacheRouter = require('./routes/taches');
-const honoraireRouter = require('./routes/honoraires');
-const ssDossierRouter = require('./routes/sousDossiers');
-const cRouter = require('./routes/collaborateursReg');
+const usersRouter = require(__dirname+'/routes/users');
+const tribRouter = require(__dirname+'/routes/tribunaux');
+const clientRouter = require(__dirname+'/routes/clients');
+const serviceRouter = require(__dirname+'/routes/services');
+const emplacementRouter = require(__dirname+'/routes/emplacements');
+const dossierRouter = require(__dirname+'/routes/dossiers');
+const archiveRouter = require(__dirname+'/routes/archives');
+const demandeursRouter = require(__dirname+'/routes/demandeurs');
+const tacheRouter = require(__dirname+'/routes/taches');
+const honoraireRouter = require(__dirname+'/routes/honoraires');
+const ssDossierRouter = require(__dirname+'/routes/sousDossiers');
+const cRouter = require(__dirname+'/routes/collaborateursReg');
 
-const ReglementsRouter = require('./routes/reglements');
+const ReglementsRouter = require(__dirname+'/routes/reglements');
 app.use('/reglements', ReglementsRouter);
 app.use('/demandeur', demandeursRouter);
 app.use('/tache', tacheRouter);
@@ -58,23 +58,23 @@ app.use('/archives', archiveRouter);
 app.use('/honoraires', honoraireRouter);
 app.use('/sousdossier', ssDossierRouter);
 
-const collaborateursRouter = require('./routes/collaborateurs');
+const collaborateursRouter = require(__dirname+'/routes/collaborateurs');
 
 app.use('/collaborateurs', collaborateursRouter);
 
-const greffiersRouter = require('./routes/greffiers');
+const greffiersRouter = require(__dirname+'/routes/greffiers');
 
 app.use('/greffiers', greffiersRouter);
 
-const primegreffiersRouter = require('./routes/primegreffiers');
+const primegreffiersRouter = require(__dirname+'/routes/primegreffiers');
 
 app.use('/primegreffiers', primegreffiersRouter);
 
-const typedossiersRouter = require('./routes/typedossiers');
+const typedossiersRouter = require(__dirname+'/routes/typedossiers');
 
 app.use('/typedossiers', typedossiersRouter);
 
-const parametreRouter = require('./routes/parametre');
+const parametreRouter = require(__dirname+'/routes/parametre');
 app.use('/parametre', parametreRouter);
 
 
