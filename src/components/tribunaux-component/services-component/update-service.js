@@ -188,7 +188,7 @@ const UpdateService = ({refresh,id,idTr,data}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/tribunaux/services/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/tribunaux/services/'+id,{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(serv)

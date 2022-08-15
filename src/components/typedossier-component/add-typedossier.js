@@ -20,7 +20,7 @@ const AddTypedossier = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/typedossiers/add',{
+            fetch('https://backend-avocat.herokuapp.com/typedossiers/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Typedossier)

@@ -17,7 +17,7 @@ const Collaborateurdossier  = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/collaborateurdossiers',{
+                fetch('https://backend-avocat.herokuapp.com/collaborateurdossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

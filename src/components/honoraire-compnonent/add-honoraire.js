@@ -29,7 +29,7 @@ const AddHonoraire = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/honoraires/add',{
+            fetch('https://backend-avocat.herokuapp.com/honoraires/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Honoraire)
@@ -54,7 +54,7 @@ const AddHonoraire = (refresh) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers',{
+                fetch('https://backend-avocat.herokuapp.com/dossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

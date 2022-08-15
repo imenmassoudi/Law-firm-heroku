@@ -25,7 +25,7 @@ const handleShow = () =>  {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers', {
+                fetch('https://backend-avocat.herokuapp.com/dossiers', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
@@ -73,7 +73,7 @@ const [validated, setValidated] = useState(false);
                 const SousDossier = {
                     idDossier
                 };
-                    fetch('http://localhost:5000/sousdossier/add',{
+                    fetch('https://backend-avocat.herokuapp.com/sousdossier/add',{
                         method:"POST",
                         headers:{"Content-Type":"application/json"},
                         body: JSON.stringify(SousDossier)

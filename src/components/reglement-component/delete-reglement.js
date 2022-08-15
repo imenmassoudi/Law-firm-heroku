@@ -9,7 +9,7 @@ const DeleteReglement = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-            fetch('http://localhost:5000/reglements/'+id, {
+            fetch('https://backend-avocat.herokuapp.com/reglements/'+id, {
                 method: 'DELETE',
             }).then(() => {
                 handleClose()

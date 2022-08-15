@@ -9,7 +9,7 @@ const DeleteDossier = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-        fetch('http://localhost:5000/dossiers/'+id, {
+        fetch('https://backend-avocat.herokuapp.com/dossiers/'+id, {
             method: 'DELETE',
         }).then(() => {
             handleClose()

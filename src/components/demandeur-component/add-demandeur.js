@@ -29,7 +29,7 @@ const AddDemandeur = (refresh) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers',{
+                fetch('https://backend-avocat.herokuapp.com/dossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -73,7 +73,7 @@ const AddDemandeur = (refresh) => {
             else{
                 const Demandeur = {nom,cin,adresse,adressedesigne,tel,fax,idDossier}
 
-                fetch('http://localhost:5000/demandeur/add',{
+                fetch('https://backend-avocat.herokuapp.com/demandeur/add',{
                         method:"POST",
                         headers:{"Content-Type":"application/json"},
                         body: JSON.stringify(Demandeur)
@@ -102,7 +102,7 @@ const AddDemandeur = (refresh) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers', {
+                fetch('https://backend-avocat.herokuapp.com/dossiers', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`

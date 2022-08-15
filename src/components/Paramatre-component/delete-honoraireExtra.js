@@ -7,7 +7,7 @@ const DeleteHonoraireExtra = ({ refresh, id, libelle_francais }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const handleDelete = () => {
-    fetch('http://localhost:5000/parametre/honoraireExtra/' + id, {
+    fetch('https://backend-avocat.herokuapp.com/parametre/honoraireExtra/' + id, {
       method: 'DELETE',
     }).then(() => {
       handleClose()

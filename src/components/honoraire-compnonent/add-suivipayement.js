@@ -23,7 +23,7 @@ const AddSuivipayement = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/suivipayement/add',{
+            fetch('https://backend-avocat.herokuapp.com/suivipayement/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Suivipayement)

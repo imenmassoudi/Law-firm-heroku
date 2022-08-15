@@ -23,7 +23,7 @@ const AddPrimegreffier = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/primegreffiers/add',{
+            fetch('https://backend-avocat.herokuapp.com/primegreffiers/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Primegreffier)

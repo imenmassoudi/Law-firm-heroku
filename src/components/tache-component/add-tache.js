@@ -33,7 +33,7 @@ const AddTache = (refresh) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers',{
+                fetch('https://backend-avocat.herokuapp.com/dossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -78,7 +78,7 @@ const AddTache = (refresh) => {
 
                     const tch = {tache,dateCritique,dateRappel,resolu,course,lieux,Service,dateAudience,dateEcheance,idDossier};
                     alert(tch)
-                    fetch('http://localhost:5000/tache/add',{
+                    fetch('https://backend-avocat.herokuapp.com/tache/add',{
                         method:"POST",
                         headers:{"Content-Type":"application/json"},
                         body: JSON.stringify(tch)
@@ -102,7 +102,7 @@ const AddTache = (refresh) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers', {
+                fetch('https://backend-avocat.herokuapp.com/dossiers', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`

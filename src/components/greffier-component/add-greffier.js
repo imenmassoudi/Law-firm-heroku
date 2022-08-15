@@ -37,7 +37,7 @@ const AddGreffier = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/greffiers/add',{
+            fetch('https://backend-avocat.herokuapp.com/greffiers/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Greffier)

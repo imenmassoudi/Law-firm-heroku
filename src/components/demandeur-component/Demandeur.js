@@ -18,7 +18,7 @@ const Demandeur  = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/demandeur',{
+                fetch('https://backend-avocat.herokuapp.com/demandeur',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

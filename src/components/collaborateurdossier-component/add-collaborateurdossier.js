@@ -50,7 +50,7 @@ const AddCollaborateurdossier = (refresh) =>{
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers',{
+                fetch('https://backend-avocat.herokuapp.com/dossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -81,7 +81,7 @@ const AddCollaborateurdossier = (refresh) =>{
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/collaborateurs', {
+                fetch('https://backend-avocat.herokuapp.com/collaborateurs', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
@@ -123,7 +123,7 @@ const AddCollaborateurdossier = (refresh) =>{
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/collaborateurs',{
+                fetch('https://backend-avocat.herokuapp.com/collaborateurs',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -162,7 +162,7 @@ const AddCollaborateurdossier = (refresh) =>{
             console.log(mode)
                     const collaborateurdossier = {idCollab,part,mode,type,idDossier};
                     alert(collaborateurdossier)
-                    fetch('http://localhost:5000/reglementCollab/add',{
+                    fetch('https://backend-avocat.herokuapp.com/reglementCollab/add',{
                         method:"POST",
                         headers:{"Content-Type":"application/json"},
                         body: JSON.stringify(collaborateurdossier)
@@ -259,7 +259,7 @@ const AddCollaborateurdossier = (refresh) =>{
                           <Col>
                               <label>Client</label>
                               <Select options={options}   onChange={(e) => {
-                                  fetch('http://localhost:5000/Collaborateurs/findCollab/'+e.value)
+                                  fetch('https://backend-avocat.herokuapp.com/Collaborateurs/findCollab/'+e.value)
                                       .then((response) => response.json())
                                       .then((data) => {
                                           setData(data)

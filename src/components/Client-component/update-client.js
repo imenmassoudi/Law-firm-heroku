@@ -51,7 +51,7 @@ const UpdateClient = ({refresh,id,data}) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/collaborateurs',{
+                fetch('https://backend-avocat.herokuapp.com/collaborateurs',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -105,7 +105,7 @@ const UpdateClient = ({refresh,id,data}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/clients/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/clients/'+id,{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(client)

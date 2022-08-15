@@ -19,7 +19,7 @@ const UpdateHonoraireExtra = ({ refresh, id, data }) => {
       event.preventDefault()
       event.stopPropagation()
     } else {
-      fetch('http://localhost:5000/parametre/honoraireExtra/' + id, {
+      fetch('https://backend-avocat.herokuapp.com/parametre/honoraireExtra/' + id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(HonoraireExtra),

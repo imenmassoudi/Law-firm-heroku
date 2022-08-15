@@ -36,7 +36,7 @@ const UpdateGreffier = ({refresh,id,data}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/greffiers/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/greffiers/'+id,{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(greffier)

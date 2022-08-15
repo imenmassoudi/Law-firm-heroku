@@ -19,7 +19,7 @@ const UpdateUser = ({refresh,id,data}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/users/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/users/'+id,{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(user)

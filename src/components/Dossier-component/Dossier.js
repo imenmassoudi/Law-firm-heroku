@@ -41,7 +41,7 @@ export default function ReactTabs() {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/clients', {
+                fetch('https://backend-avocat.herokuapp.com/clients', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
@@ -106,7 +106,7 @@ export default function ReactTabs() {
                                     <Col>
                                         <label>Client</label>
                                         <Select options={options}   onChange={(e) => {
-                                            fetch('http://localhost:5000/clients/findClient/'+e.value)
+                                            fetch('https://backend-avocat.herokuapp.com/clients/findClient/'+e.value)
                                                 .then((response) => response.json())
                                                 .then((data) => {
                                                     setData(data)

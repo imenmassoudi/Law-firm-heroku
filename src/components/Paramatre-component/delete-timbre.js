@@ -6,7 +6,7 @@ const DeleteTimbre = ({ refresh, id, libelle }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const handleDelete = () => {
-    fetch('http://localhost:5000/parametre/timbre/' + id, {
+    fetch('https://backend-avocat.herokuapp.com/parametre/timbre/' + id, {
       method: 'DELETE',
     }).then(() => {
       handleClose()

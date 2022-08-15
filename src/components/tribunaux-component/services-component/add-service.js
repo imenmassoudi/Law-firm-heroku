@@ -177,7 +177,7 @@ const AddService = ({refresh,id}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/tribunaux/services/add',{
+            fetch('https://backend-avocat.herokuapp.com/tribunaux/services/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(services)

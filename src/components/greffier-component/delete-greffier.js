@@ -9,7 +9,7 @@ const DeleteGreffier = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-            fetch('http://localhost:5000/greffiers/'+id, {
+            fetch('https://backend-avocat.herokuapp.com/greffiers/'+id, {
                 method: 'DELETE',
             }).then(() => {
                 handleClose()

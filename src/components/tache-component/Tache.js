@@ -18,7 +18,7 @@ const Tache  = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/tache',{
+                fetch('https://backend-avocat.herokuapp.com/tache',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

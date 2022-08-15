@@ -7,7 +7,7 @@ const DeleteRecetteFinance = ({ refresh, id, libelle }) => {
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const handleDelete = () => {
-    fetch('http://localhost:5000/parametre/recette_fin/' + id, {
+    fetch('https://backend-avocat.herokuapp.com/parametre/recette_fin/' + id, {
       method: 'DELETE',
     }).then(() => {
       handleClose()

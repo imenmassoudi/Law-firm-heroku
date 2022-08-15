@@ -22,7 +22,7 @@ const Timbre = () => {
         localStorage.removeItem('token')
         history.push('/login')
       } else {
-        fetch('http://localhost:5000/parametre/timbre', {
+        fetch('https://backend-avocat.herokuapp.com/parametre/timbre', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

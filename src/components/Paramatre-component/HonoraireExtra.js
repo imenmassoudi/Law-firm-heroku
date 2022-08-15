@@ -23,7 +23,7 @@ const HonoraireExtra = () => {
         localStorage.removeItem('token')
         history.push('/login')
       } else {
-        fetch('http://localhost:5000/parametre/honoraireExtra', {
+        fetch('https://backend-avocat.herokuapp.com/parametre/honoraireExtra', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

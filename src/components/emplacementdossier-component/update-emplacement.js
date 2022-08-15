@@ -18,7 +18,7 @@ const UpdateEmplacement = ({refresh,id,data}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/emplacements/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/emplacements/'+id,{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(emplacement)

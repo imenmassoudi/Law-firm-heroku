@@ -9,7 +9,7 @@ const DeleteTache = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-            fetch('http://localhost:5000/tache/'+id, {
+            fetch('https://backend-avocat.herokuapp.com/tache/'+id, {
                 method: 'DELETE',
             }).then(() => {
                 handleClose()

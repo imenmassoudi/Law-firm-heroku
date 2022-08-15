@@ -21,7 +21,7 @@ const Typedossier  = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/typedossiers',{
+                fetch('https://backend-avocat.herokuapp.com/typedossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

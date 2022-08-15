@@ -8,8 +8,7 @@ const DeleteTribunal = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-        alert('http://localhost:5000/tribunaux/'+id)
-        fetch('http://localhost:5000/tribunaux/'+id, {
+        fetch('https://backend-avocat.herokuapp.com/tribunaux/'+id, {
             method: 'DELETE',
         }).then(() => {
             handleClose()

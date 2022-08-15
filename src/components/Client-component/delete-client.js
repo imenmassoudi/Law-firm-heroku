@@ -9,7 +9,7 @@ const DeleteClient = ({refresh,id,nom}) => {
 
 
     const handleDelete= () => {
-        fetch('http://localhost:5000/clients/'+id, {
+        fetch('https://backend-avocat.herokuapp.com/clients/'+id, {
             method: 'DELETE',
         }).then(() => {
             handleClose()

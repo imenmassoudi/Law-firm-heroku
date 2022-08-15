@@ -15,7 +15,7 @@ const UpdateTimbre = ({ refresh, id, data }) => {
       event.preventDefault()
       event.stopPropagation()
     } else {
-      fetch('http://localhost:5000/parametre/timbre/' + id, {
+      fetch('https://backend-avocat.herokuapp.com/parametre/timbre/' + id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Timbre),

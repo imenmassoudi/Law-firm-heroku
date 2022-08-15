@@ -20,7 +20,7 @@ const AddEmplacement = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/emplacements/add',{
+            fetch('https://backend-avocat.herokuapp.com/emplacements/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Emplacement)

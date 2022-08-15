@@ -16,7 +16,7 @@ const UpdateRecetteFinance = ({ refresh, id, data }) => {
       event.preventDefault()
       event.stopPropagation()
     } else {
-      fetch('http://localhost:5000/parametre/recette_fin/' + id, {
+      fetch('https://backend-avocat.herokuapp.com/parametre/recette_fin/' + id, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(RecetteFinance),

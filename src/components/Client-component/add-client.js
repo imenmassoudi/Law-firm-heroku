@@ -54,7 +54,7 @@ const AddClient = ({refresh,clientsList}) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/collaborateurs',{
+                fetch('https://backend-avocat.herokuapp.com/collaborateurs',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -94,7 +94,7 @@ const AddClient = ({refresh,clientsList}) => {
             event.stopPropagation();
         }
         else{
-        fetch('http://localhost:5000/clients/find/'+nomTape)
+        fetch('https://backend-avocat.herokuapp.com/clients/find/'+nomTape)
             .then((response) => response.json())
             .then((e) => {
                 const cpt = parseInt(e)+1;
@@ -119,7 +119,7 @@ const AddClient = ({refresh,clientsList}) => {
                     fax,
                     email};
                 alert(codeClient)
-                fetch('http://localhost:5000/clients/add',{
+                fetch('https://backend-avocat.herokuapp.com/clients/add',{
                     method:"POST",
                     headers:{"Content-Type":"application/json"},
                     body: JSON.stringify(client)

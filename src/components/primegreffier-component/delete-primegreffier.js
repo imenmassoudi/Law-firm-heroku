@@ -9,7 +9,7 @@ const DeletePrimegreffier = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-            fetch('http://localhost:5000/primegreffiers/'+id, {
+            fetch('https://backend-avocat.herokuapp.com/primegreffiers/'+id, {
                 method: 'DELETE',
             }).then(() => {
                 handleClose()

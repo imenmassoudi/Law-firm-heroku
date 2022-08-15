@@ -11,7 +11,7 @@ useEffect(() => {
             localStorage.removeItem('token')
             history.push('/login')
         } else {
-            fetch('http://localhost:5000/dossiers',{
+            fetch('https://backend-avocat.herokuapp.com/dossiers',{
                 headers: {
                     'Content-Type': 'application/json',
                     "Authorization" : `Bearer ${token}`
@@ -24,7 +24,7 @@ useEffect(() => {
                 setData(data)
                 const list_id = [];
                 data.map((e)=>{
-                    fetch('http://localhost:5000/emplacements/'+e.emplacement)
+                    fetch('https://backend-avocat.herokuapp.com/emplacements/'+e.emplacement)
                         .then((response) => response.json())
 
                         .then((res) => {

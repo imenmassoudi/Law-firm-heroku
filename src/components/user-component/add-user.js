@@ -29,7 +29,7 @@ const AddUser = (refresh) => {
         }
         else{
 
-            fetch('http://localhost:5000/users/add',{
+            fetch('https://backend-avocat.herokuapp.com/users/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(user)

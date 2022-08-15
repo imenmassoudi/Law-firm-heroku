@@ -9,7 +9,7 @@ const DeleteEmplacement = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-            fetch('http://localhost:5000/emplacements/'+id, {
+            fetch('https://backend-avocat.herokuapp.com/emplacements/'+id, {
                 method: 'DELETE',
             }).then(() => {
                 handleClose()

@@ -23,7 +23,7 @@ const RecetteFinance = () => {
         localStorage.removeItem('token')
         history.push('/login')
       } else {
-        fetch('http://localhost:5000/parametre/recette_fin', {
+        fetch('https://backend-avocat.herokuapp.com/parametre/recette_fin', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

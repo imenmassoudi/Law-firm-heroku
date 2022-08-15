@@ -12,7 +12,7 @@ const ParamGlobal = () => {
   const [transport, settransport] = useState(0)
   const [photocopie, setphotocopie] = useState(0)
   const handleUpdateParam = () => {
-    fetch('http://localhost:5000/parametre/global', {
+    fetch('https://backend-avocat.herokuapp.com/parametre/global', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ tva, timbre, transport, photocopie }),
@@ -31,7 +31,7 @@ const ParamGlobal = () => {
         localStorage.removeItem('token')
         history.push('/login')
       } else {
-        fetch('http://localhost:5000/parametre/global', {
+        fetch('https://backend-avocat.herokuapp.com/parametre/global', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`,

@@ -26,7 +26,7 @@ const Services = () => {
                 history.push('/login')
             } else {
              
-                fetch('http://localhost:5000/tribunaux/services/'+params.id,{
+                fetch('https://backend-avocat.herokuapp.com/tribunaux/services/'+params.id,{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

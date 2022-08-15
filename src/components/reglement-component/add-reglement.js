@@ -32,7 +32,7 @@ const AddReglement = (refresh) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers',{
+                fetch('https://backend-avocat.herokuapp.com/dossiers',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
@@ -77,7 +77,7 @@ const AddReglement = (refresh) => {
                    const Reglement = {montant,type,bare,numOperation,banque,porteur,echeance,numAffaire};
 
                     alert(Reglement)
-                    fetch('http://localhost:5000/reglements/add',{
+                    fetch('https://backend-avocat.herokuapp.com/reglements/add',{
                         method:"POST",
                         headers:{"Content-Type":"application/json"},
                         body: JSON.stringify(Reglement)

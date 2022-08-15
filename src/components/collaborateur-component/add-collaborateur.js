@@ -27,7 +27,7 @@ const AddCollaborateur = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/collaborateurs/add',{
+            fetch('https://backend-avocat.herokuapp.com/collaborateurs/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(Collaborateur)

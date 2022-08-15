@@ -26,7 +26,7 @@ const UpdateCollaborateur = ({refresh,id,data}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/collaborateurs/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/collaborateurs/'+id,{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(collaborateur)

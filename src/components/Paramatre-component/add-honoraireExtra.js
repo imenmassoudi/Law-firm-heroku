@@ -17,7 +17,7 @@ const AddHonoraireExtra = (refresh) => {
       event.preventDefault()
       event.stopPropagation()
     } else {
-      fetch('http://localhost:5000/parametre/honoraireExtra', {
+      fetch('https://backend-avocat.herokuapp.com/parametre/honoraireExtra', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(HonoraireExtra),

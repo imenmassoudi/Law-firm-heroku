@@ -18,7 +18,7 @@ const AddTribunaux = (refresh) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/tribunaux/add',{
+            fetch('https://backend-avocat.herokuapp.com/tribunaux/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(tribunal)

@@ -21,7 +21,7 @@ const Archive = ({refresh,idDossier}) => {
                 localStorage.removeItem('token')
                 //   history.push('/login')
             } else {
-                fetch('http://localhost:5000/emplacements', {
+                fetch('https://backend-avocat.herokuapp.com/emplacements', {
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`
@@ -57,7 +57,7 @@ const Archive = ({refresh,idDossier}) => {
             event.stopPropagation();
         }
         else{
-            fetch('http://localhost:5000/archives/add',{
+            fetch('https://backend-avocat.herokuapp.com/archives/add',{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(dossier)

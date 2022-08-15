@@ -22,7 +22,7 @@ const Reglement  = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/reglements',{
+                fetch('https://backend-avocat.herokuapp.com/reglements',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`

@@ -15,7 +15,7 @@ const AddTimbre = (refresh) => {
       event.preventDefault()
       event.stopPropagation()
     } else {
-      fetch('http://localhost:5000/parametre/timbre', {
+      fetch('https://backend-avocat.herokuapp.com/parametre/timbre', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(Timbre),

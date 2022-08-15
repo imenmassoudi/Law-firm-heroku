@@ -21,7 +21,7 @@ const Dossiers = () => {
     const [searchTerm,setSearchTerm] = useState("")
 
     function findEmplacement(id){
-        fetch('http://localhost:5000/emplacements/'+id)
+        fetch('https://backend-avocat.herokuapp.com/emplacements/'+id)
             .then((response) => response.json())
 
             .then((res) => {
@@ -35,7 +35,7 @@ const Dossiers = () => {
     }
 
     function findClientByID(id)  {
-        fetch('http://localhost:5000/clients/'+id)
+        fetch('https://backend-avocat.herokuapp.com/clients/'+id)
         .then((response) => response.json())
         .then((res) => {
             console.log(res)
@@ -73,7 +73,7 @@ const Dossiers = () => {
                 localStorage.removeItem('token')
                 history.push('/login')
             } else {
-                fetch('http://localhost:5000/dossiers/all',{
+                fetch('https://backend-avocat.herokuapp.com/dossiers/all',{
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization" : `Bearer ${token}`
