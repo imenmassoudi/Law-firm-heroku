@@ -22,7 +22,7 @@ const Login = () => {
                     // setX(x+1);
                 })*/
 
-        const response = await fetch('http://localhost:5000/users/login', {
+        const response = await fetch('https://backend-avocat.herokuapp.com/users/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,7 +38,8 @@ const Login = () => {
         if (response.ok) {
             localStorage.setItem('token', data.token)
             localStorage.setItem('user', data.username)
-            window.location.href = '/user'
+       //     window.location.href = 'https://backend-avocat.herokuapp.com/users'
+            history.push('/user')
 
            
         } else {
