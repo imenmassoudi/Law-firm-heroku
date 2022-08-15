@@ -20,7 +20,6 @@ const User = () => {
                 history.push('/login')
             } else {
                 fetch('/users', {
-                    mode:'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                         "Authorization": `Bearer ${token}`

@@ -23,7 +23,6 @@ const Login = () => {
                 })*/
 
         const response = await fetch('/users/login', {
-            mode:'no-cors',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
