@@ -5,10 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "client": "npm start ../",
-    "dev": "npm run client",
-    "heroku-postbuild": "npm run build --prefix Gestion_Cabinet_Avocats"
+    "start": "react-scripts start",
+    "heroku-postbuild": "npm run build"
   },
   "engines": {
     "node": "16.x"
