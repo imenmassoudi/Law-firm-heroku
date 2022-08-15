@@ -78,6 +78,6 @@ const parametreRouter = require(__dirname+'/routes/Parametre');
 app.use('/parametre', parametreRouter);
 
 
-app.listen(port, "firm-management-ensi",() => {
+app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
