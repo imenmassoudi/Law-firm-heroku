@@ -1,2 +1,2 @@
-web: npm i && npm start
+web: npm start
 server: cd backend && node server.js
