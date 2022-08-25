@@ -124,15 +124,17 @@ const AddClient = ({refresh,clientsList}) => {
                     headers:{"Content-Type":"application/json"},
                     body: JSON.stringify(client)
                 }).then(() => {console.log("new client added");
-                  //  handleClose();
-                    //refresh();
+                    handleClose();
+                    refresh();
             })
+                handleClose();
+                refresh();
       //  event.preventDefault()
 
-                // setX(x+1);
+                 //setX(x+1);
             })
         }
-        event.preventDefault()
+      //  event.preventDefault()
         setValidated(true);
 
 

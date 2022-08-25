@@ -48,7 +48,7 @@ return(
         <div className="row">
             <div className="col-12">
         <div className="card">
-            <div className="card-body table-responsive p-0" style={{height: "300px"}}>
+            <div className="card-body table-responsive p-0 " style={{height: "300px"}}>
             <AddHonoraire refresh={refresh}/>
             </div>
             </div>

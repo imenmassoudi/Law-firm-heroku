@@ -1,5 +1,5 @@
 import {useHistory} from "react-router-dom";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import jwt from "jwt-decode";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ReclasserDossier from "./reclasser-dossier-component";
@@ -7,10 +7,30 @@ import Archive from "../Archive-component/Archive";
 import DeleteDossier from "./Supprimer-dossier";
 import ReactToPrint from "react-to-print";
 import PrintComponent from "../print/PrintComponent";
+import styled from 'styled-components';
 
+import DataTable from "react-data-table-component";
+
+const FilterComponent = ({ filterText, onFilter, onClear }) => (
+    <>
+        <input
+            id="search"
+            className="form-control-sm"
+            type="text"
+            placeholder="Chercher ..."
+            aria-label="Search Input"
+            value={filterText}
+            onChange={onFilter}
+            style={{borderTop:"none",borderRight:"none",borderLeft:"none"}}
+        />
+        <button type="button" onClick={onClear}  class="btn btn-light">
+            X
+        </button>
+    </>
+);
 const Dossiers = () => {
     const ids = ["1"];
-
+    var a = [];
     const history = useHistory()
     const [x, setX] = useState(1);
     const [data, setData] = useState([]);
@@ -19,51 +39,56 @@ const Dossiers = () => {
     const [tel, setTel] = useState([]);
 
     const [searchTerm,setSearchTerm] = useState("")
+    const [selectedData, setSelectedData] = useState();
+    const [filterText, setFilterText] = useState('');
+    const filteredItems = data.filter(item=>
+        item.typeDs.toString().toLowerCase().includes(filterText.toLowerCase()) ||
+        item.lieu.toString().toLowerCase().includes(filterText.toLowerCase()) ||
+        item.numAffaire.toString().toLowerCase().includes(filterText.toLowerCase()) ||
+        item.emplacement.toString().toLowerCase().includes(filterText.toLowerCase()) ||
+        item.client.toString().toLowerCase().includes(filterText.toLowerCase()) ||
+        item.tel.toString().toLowerCase().includes(filterText.toLowerCase()) ||
+        item.mission.toString().toLowerCase().includes(filterText.toLowerCase())
 
-    function findEmplacement(id){
-        fetch('https://backend-avocat.herokuapp.com/emplacements/'+id)
-            .then((response) => response.json())
+    )
+    const columns = [
+        {
+            name: "Numéro affaire",
+            selector: row => row.numAffaire,
+        },
+        {
+            name: "Lieu",
+            selector: row => row.lieu,
+        },
+        {
+            name: "Type dossier",
+            selector: row => row.typeDs
+        },
+        {
+            name: "Emplacement",
+            selector: row => row.emplacement
+        },
+        {
+            name: "Client",
+            selector: row => row.client
+        },
+        {
+            name: "Tel",
+            selector: row => row.tel
+        },
+        {
+            name: "Mission",
+            selector: row => row.mission
+        },
+    ];
 
-            .then((res) => {
 
-                    setEmplacement(res.libelle)
-
-
-            })
-
-        return emplacement
-    }
-
-    function findClientByID(id)  {
-        fetch('https://backend-avocat.herokuapp.com/clients/'+id)
-        .then((response) => response.json())
-        .then((res) => {
-            console.log(res)
-            setNom(res.nom)
-            setTel(res.tel)
-        })
-        return nom
-    }
+    const handleChange = (state) => {
+        setSelectedData(state.selectedRows);
+    };
     let componentRef = useRef();
 
-    // const dispatch = useDispatch();
-     // const stableDispatch = useCallback(dispatch, []);
-
-    // useEffect(() => {
-    //     const script = document.createElement('script');
-    //
-    //     script.src = "test.js";
-    //     script.async = true;
-    //
-    //     document.body.appendChild(script);
-    //     script.innerHTML = "document.write('This is output by document.write()!')";
-    //
-    //     // return () => {
-    //     //     document.body.removeChild(script);
-    //     // }
-    // }, []);
     useEffect(() => {
-
         const token = localStorage.getItem('token')
 
         if (token) {
@@ -80,24 +105,38 @@ const Dossiers = () => {
                     },
                 })
                     .then(res => {
-                       return res.json();
-                    }).then(data =>
+                        return res.json();
+                    }).then(r =>
                 {
-                    setData(data)
-                    console.log(data)
+
+                    setData(r)
+
+
                 }).catch(err =>{
-                    console.log("errrrr");
+                    console.log(err);
                 })
             }
         }
-        //stableDispatch();
 
     },[x])
 
     const refresh = () => {
         setX(x+1);
     };
+    const test = () => {
+        console.log(selectedData);
+    };
+    const subHeaderComponentMemo = useMemo(() => {
+        const handleClear = () => {
+            if (filterText) {
+                setFilterText('');
+            }
+        };
 
+        return (
+            <FilterComponent onFilter={e => setFilterText(e.target.value)} onClear={handleClear} filterText={filterText} />
+        );
+    }, [filterText]);
     return (
         <div className="content-wrapper">
             <div className="row">
@@ -106,7 +145,7 @@ const Dossiers = () => {
                     <div className="card" ref={el =>(componentRef=el)}>
                         <div className="card-header">
                             <h3 className="card-title">Liste des dossiers</h3>
-                           <span style={{float:"right"}}>
+                            <span style={{float:"right"}}>
                                 <ReactToPrint
                                     trigger={() => {
                                         // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
@@ -118,82 +157,21 @@ const Dossiers = () => {
                            </span>
                         </div>
                         <div className="card-body">
-                            <p style={{float:"right"}}>
-                                <div className="input-group input-group-sm mb-3 right floated " >
-
-                                    <input type="text" className="form-control-sm" aria-label="Small" onChange={event => {setSearchTerm(event.target.value)}}
-                                           aria-describedby="inputGroup-sizing-sm" placeholder="chercher..." style={{borderTop:"none",borderRight:"none",borderLeft:"none"}}/>
-                                    <div className="input-group-prepend" >
-                                        <span className="input-group-text" id="inputGroup-sizing-sm" ><i className="fa fa-search"/></span>
-                                    </div>
-                                </div>
-
+                            <p style={{display:"flex"}}>
+                                <ReclasserDossier refresh={refresh} selectedData={selectedData}/>
+                                <Archive refresh={refresh} selectedData={selectedData}/>
+                                <DeleteDossier refresh={refresh} selectedData={selectedData}/>
                             </p>
 
-                        <table id="example2" className="table table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th style={{textAlign:"center"}}>Numéro affaire</th>
-                                    <th style={{textAlign:"center"}}>Lieu</th>
-                                    <th style={{textAlign:"center"}}>Type dossier</th>
-                                    <th style={{textAlign:"center"}}>Emplacement</th>
-                                    <th style={{textAlign:"center"}}>Client</th>
-                                    <th style={{textAlign:"center"}}>Tel</th>
-                                    <th style={{textAlign:"center"}}>Mission</th>
-                                    <th style={{textAlign:"center"}}>Reclasser</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-
-                                {data.filter((data)=>{
-                                    if(searchTerm === ""){
-                                        return data
-                                    }else  {if (data.numAffaire.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                                        ( data.lieu[0].lieu.toLowerCase().includes(searchTerm.toLowerCase()))||
-                                        (  data.typeDs[0].libelle.toLowerCase().includes(searchTerm.toLowerCase()))||
-                                        (data.mission.toLowerCase().includes(searchTerm.toLowerCase()))||
-                                        (data.emplacement.toLowerCase().includes(searchTerm.toLowerCase()))) {
-                                        return data
-                                    } }
-                                })
-                                .map((data, index) =>(
-                                    <tr key={data._id} >
-                                        <td style={{textAlign:"center"}}>{data.numAffaire}</td>
-                                        <td style={{textAlign:"center"}}>{data.lieu[0].lieu}</td>
-                                        <td style={{textAlign:"center"}}>{data.typeDs[0].libelle}</td>
-                                        <td style={{textAlign:"center"}}>
-                                            {data.lib[0].libelle}
-
-                                        </td>
-                                        <td style={{textAlign:"center"}}>
-                                            {data.clientC[0].nom}
-
-                                        </td>
-                                        <td style={{textAlign:"center"}}>
-                                            {data.clientC[0].tel}
-
-                                    </td>
-                                        <td style={{textAlign:"center"}}>{data.mission}</td>
-                                        <td style={{textAlign:"center"}}>
-                                            <p style={{textAlign:"center"}}>
-                                                <ButtonGroup className="mb-2">
-                                                    <ReclasserDossier refresh={refresh} id={data._id}/>
-                                                    <Archive refresh={refresh} idDossier={data._id}/>
-                                                    <DeleteDossier refresh={refresh} id={data._id} username={data.username}/>
-
-                                                </ButtonGroup>
-                                            </p>
-
-                                        </td>
-
-                                    </tr>
-
-                                ))}
-
-
-                                </tbody>
-
-                            </table>
+                            <DataTable
+                                data={filteredItems}
+                                columns={columns}
+                                selectableRows
+                                highlightOnHover
+                                subHeader
+                                subHeaderComponent={subHeaderComponentMemo}
+                                onSelectedRowsChange={handleChange}
+                            />
 
                         </div>
                     </div>
@@ -203,6 +181,6 @@ const Dossiers = () => {
 
         </div>
 
-)
+    )
 }
 export default Dossiers

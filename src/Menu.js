@@ -23,104 +23,131 @@ const Menu = () => {
                     </div>
                     <nav className="mt-2">
                         <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                            <li className="nav-header">Gestion des utilisateurs </li>
                             <li className="nav-item">
-                                <Link to="/user" className="nav-link">
-                                    <i className="nav-icon fa fa-user" />
-                                    <p>Utilisateurs</p>
-                                </Link>
-                            </li>
-                            <li className="nav-header">Gestion des clients</li>
-                            <li className="nav-item">
-                                <Link to="/clients" className="nav-link">
-                                    <i className="nav-icon fa fa-user-friends" />
-                                    <p>Clients</p>
-                                </Link>
-                            </li>
-
-                           
-                            <li className="nav-header">liste des tribunaux</li>
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Paramétre
+                                        <i className="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <Link to='/param_global' className='nav-link'>
+                                            <i className='nav-icon fas fa-cogs'></i>
+                                            <p>Paramétre globale</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/honoraire_extra' className='nav-link'>
+                                            <i className='nav-icon fas fa-sliders-h'></i>
+                                            <p>Honoraire en extra</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="nav-icon fas fa-circle"></i>
+                                            <p>
+                                                Debours
+                                                <i className="right fas fa-angle-left"></i>
+                                            </p>
+                                        </a>
+                                        <ul className="nav nav-treeview">
+                                            <li className="nav-item">
+                                                <Link to='/timbre' className='nav-link'>
+                                                    <i className='nav-icon fas fa-mail-bulk'></i>
+                                                    <p>Timbre</p>
+                                                </Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link to='/recette_finance' className='nav-link'>
+                                                    <i className='nav-icon fas fa-file-invoice-dollar'></i>
+                                                    <p>Recette de finance</p>
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/emplacement" className="nav-link">
+                                            <i className="nav-icon fas fa-question-circle" />
+                                            <p>Emplacement dossier</p>
+                                        </Link>
+                                    </li>
                                     <li className="nav-item">
                                         <Link to="/tribunaux" className="nav-link">
                                             <i className="nav-icon fas fa-building"></i>
                                             <p>Tribunaux</p>
                                         </Link>
                                     </li>
-                                    <li className="nav-header">collaborateur</li>
-                                <li className="nav-item">
-                                    <Link to="/collaborateur" className="nav-link">
-                                        <i className="nav-icon fas fa-edit" />
-                                        <p>liste des Collaborateurs</p>
-                                    </Link>
-                                </li>
-
-                                <li className="nav-header">greffier</li>
-                                <li className="nav-item">
-                                    <Link to="/greffier" className="nav-link">
-                                        <i className="nav-icon fas fa-cogs" />
-                                        <p>liste des Greffiers</p>
-                                    </Link>
-                                </li>
-
-                                <li className="nav-header">prime greffier</li>
-                                <li className="nav-item">
-                                    <Link to="/primegreffier" className="nav-link">
-                                        <i className="nav-icon fas fa-edit" />
-                                        <p>liste des primes greffier</p>
-                                    </Link>
-                                </li>
-                                <li className="nav-header">dossier</li>
-                                <li className="nav-item">
-                                    <Link to="/dossiersList" className="nav-link">
-                                        <i className="nav-icon fas fa-archive" />
-                                        <p>Tous les dossiers</p>
-                                    </Link>
-                                </li>
+                                    <li className="nav-item">
+                                        <Link to="/typedossier" className="nav-link">
+                                            <i className="nav-icon fas fa-file" />
+                                            <p>Type dossier</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/user" className="nav-link">
+                                            <i className="nav-icon fa fa-user" />
+                                            <p>Utilisateurs</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/collaborateur" className="nav-link">
+                                            <i className="nav-icon fas fa-edit" />
+                                            <p>Collaborateurs</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/greffier" className="nav-link">
+                                            <i className="nav-icon fas fa-cogs" />
+                                            <p>Greffiers</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/primegreffier" className="nav-link">
+                                            <i className="nav-icon fas fa-edit" />
+                                            <p>Primes greffiers</p>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
                             <li className="nav-item">
-                                    <Link to="/dossier" className="nav-link">
-                                        <i className="nav-icon fas fa-edit" />
-                                        <p>Créer dossier</p>
-                                    </Link>
-                                </li>
+                                <Link to="/clients" className="nav-link">
+                                    <i className="nav-icon fa fa-user-friends" />
+                                    <p>Clients</p>
+                                </Link>
+                            </li>
                             <li className="nav-item">
-                                    <Link to="/typedossier" className="nav-link">
-                                        <i className="nav-icon fas fa-file" />
-                                        <p>type dossier</p>
-                                    </Link>
-                                </li>
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-file"></i>
+                                    <p>
+                                        Dossiers
+                                        <i className="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <Link to="/dossiersList" className="nav-link">
+                                            <i className="nav-icon fas fa-archive" />
+                                            <p>Tous les dossiers</p>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to="/dossier" className="nav-link">
+                                            <i className="nav-icon fas fa-edit" />
+                                            <p>Créer dossier</p>
+                                        </Link>
+                                    </li>
 
-                                <li className="nav-item">
-                                    <Link to="/emplacement" className="nav-link">
-                                        <i className="nav-icon fas fa-question-circle" />
-                                        <p>emplacement dossier</p>
-                                    </Link>
-                                </li>
-                                
-                                <li className='nav-item'>
-                                     <Link to='/param_global' className='nav-link'>
-                                         <i class='nav-icon fas fa-cogs'></i>
-                                        <p>Parametre Global</p>
-                                     </Link>
-                                 </li>
-                                <li className='nav-item'>
-                                    <Link to='/honoraire_extra' className='nav-link'>
-                                      <i class='nav-icon fas fa-sliders-h'></i>
-                                      <p>Honoraire en extra</p>
-                                 </Link>
-                                </li>
-                                 <li className='nav-item'>
-                                     <Link to='/recette_finance' className='nav-link'>
-                                       <i class='nav-icon fas fa-file-invoice-dollar'></i>
-                                        <p>Recette de Finance</p>
-                                    </Link>
-                                 </li>
-                                 <li className='nav-item'>
-                                  <Link to='/timbre' className='nav-link'>
-                                    <i class='nav-icon fas fa-mail-bulk'></i>
-                                    <p>Timbre</p>
-                                  </Link>
-                              </li>
-                           
+                                    <li className="nav-item">
+                                        <Link to="/emplacement" className="nav-link">
+                                            <i className="nav-icon fas fa-question-circle" />
+                                            <p>emplacement dossier</p>
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+
                                 
                           
                         </ul>

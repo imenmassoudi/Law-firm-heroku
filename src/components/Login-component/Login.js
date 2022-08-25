@@ -38,8 +38,8 @@ const Login = () => {
         if (response.ok) {
             localStorage.setItem('token', data.token)
             localStorage.setItem('user', data.username)
-       //     window.location.href = 'https://backend-avocat.herokuapp.com/users'
-            history.push('/user')
+            window.location.href = '/user'
+           // history.push('/user')
 
            
         } else {

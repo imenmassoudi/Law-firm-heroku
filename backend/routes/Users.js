@@ -40,9 +40,7 @@ router.route('/add').post(async (req, res) => {
 
 //login
 router.route('/login').post(async (req, res) => {
-   // const { username, pwd } = req.body
-    const username = req.body.username
-    const pwd = req.body.pwd
+    const { username, pwd } = req.body
     console.log("aaaaa "+username+ "bbb"+pwd)
     // Check for user email
     const user = await User.findOne({ username })
@@ -57,7 +55,9 @@ router.route('/login').post(async (req, res) => {
         })
     } else {
         res.status(400)
-        throw new Error('Invalid credentials')
+
+        res.json("bad request!");
+     //   throw new Error('Invalid credentials')
     }
 })
 

@@ -54,7 +54,7 @@ const AddGreffier = (refresh) => {
   return(
       <div className="row">
           <div className="col-12">
-              <Button variant="primary" onClick={handleShow}>
+              <Button variant="outline-secondary" onClick={handleShow}>
                   Ajouter un greffier
               </Button>
               <Modal show={show} onHide={handleClose}>

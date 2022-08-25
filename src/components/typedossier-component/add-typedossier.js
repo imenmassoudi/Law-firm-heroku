@@ -37,12 +37,12 @@ const AddTypedossier = (refresh) => {
   return(
       <div className="row">
           <div className="col-12">
-              <Button variant="primary" onClick={handleShow}>
-                  Ajouter un prime
+              <Button variant="outline-secondary" onClick={handleShow}>
+                  Ajouter un type dossier
               </Button>
               <Modal show={show} onHide={handleClose}>
                   <Modal.Header>
-                      <Modal.Title>Ajouter un prime</Modal.Title>
+                      <Modal.Title>Ajouter un type</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
                       <Form noValidate validated={validated} onSubmit={handleSubmit}>

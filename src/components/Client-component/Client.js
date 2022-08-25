@@ -2,11 +2,8 @@ import {useState, useEffect} from "react";
 
 import jwt from 'jwt-decode'
 import { useHistory } from 'react-router-dom'
-import AddUser from "../user-component/add-user";
 import AddClient from "./add-client";
-import DeleteUser from "../user-component/delete-user";
 import DeleteClient from "./delete-client";
-import UpdateUser from "../user-component/update-user";
 import UpdateClient from "./update-client";
 
 const Client = () => {
@@ -51,7 +48,7 @@ const Client = () => {
                 <div className="col-25">
                     <div className="card">
                         <div className="card-header">
-                            <h3 className="card-title">Liste des client</h3>
+                            <h3 className="card-title">Liste des clients</h3>
                             <AddClient refresh={refresh} clientsList={data}/>
                         </div>
 

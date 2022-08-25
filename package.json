@@ -20,6 +20,7 @@
     "node-polyfill-webpack-plugin": "^2.0.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
+    "react-data-table-component": "^7.5.2",
     "react-dom": "^18.2.0",
     "react-jwt": "^1.1.6",
     "react-pdf-print": "^0.2.0",
@@ -43,7 +44,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
-
   },
   "eslintConfig": {
     "extends": [

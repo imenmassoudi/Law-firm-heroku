@@ -156,20 +156,20 @@ const SousDossier = () => {
                                     } }
                                 })
                                     .map((data, index) =>(
-                                        <tr key={data._id} >
+                                        <tr key={data.id} >
                                             <td style={{textAlign:"center"}}>{data.numAffaire}</td>
-                                            <td style={{textAlign:"center"}}>{data.lieu[0].lieu}</td>
-                                            <td style={{textAlign:"center"}}>{data.typeDs[0].libelle}</td>
+                                            <td style={{textAlign:"center"}}>{data.lieu}</td>
+                                            <td style={{textAlign:"center"}}>{data.typeDs}</td>
                                             <td style={{textAlign:"center"}}>
-                                                {data.lib[0].libelle}
+                                                {data.emplacement}
 
                                             </td>
                                             <td style={{textAlign:"center"}}>
-                                                {data.clientC[0].nom}
+                                                {data.client}
 
                                             </td>
                                             <td style={{textAlign:"center"}}>
-                                                {data.clientC[0].tel}
+                                                {data.tel}
 
                                             </td>
                                             <td style={{textAlign:"center"}}>{data.mission}</td>

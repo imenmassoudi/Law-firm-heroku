@@ -12,18 +12,21 @@ router.route('/').get(protect,(req, res)=> {
 });
 //http post
 router.route('/add').post( (req, res) => {
+
     const emplacement = req.body.emplacement;
-    const idDossier = req.body.idDossier;
-    const newArchive = new Archives({
-        emplacement,idDossier})
-    newArchive.save()
-        .then(() =>{
-            console.log(emplacement)
-        Dossiers.findByIdAndDelete(idDossier)
-            .then(() => res.json('dossier deleted.'))
-            .catch(err => res.status(400).json('Error: ' + err));
+    req.body.selectedData.map(e => {
+        const idDossier  = e.id
+        const newArchive = new Archives({
+            emplacement,idDossier})
+        newArchive.save()
+            .then(() => {
+                console.log(emplacement)
+                Dossiers.findByIdAndDelete(idDossier)
+
+            })
     })
-        .catch(err => res.status(400).json('Error: ' + err));
+    res.json("added")
+
 });
 
 module.exports = router;

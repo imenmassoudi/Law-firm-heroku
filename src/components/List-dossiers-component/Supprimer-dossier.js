@@ -1,7 +1,7 @@
 import {Button, Modal} from "react-bootstrap";
 import {useState} from "react";
 
-const DeleteDossier = ({refresh,id}) => {
+const DeleteDossier = ({refresh,selectedData}) => {
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -9,8 +9,12 @@ const DeleteDossier = ({refresh,id}) => {
 
 
     const handleDelete= () => {
-        fetch('https://backend-avocat.herokuapp.com/dossiers/'+id, {
-            method: 'DELETE',
+        fetch('https://backend-avocat.herokuapp.com/dossiers/sup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(selectedData)
         }).then(() => {
             handleClose()
             refresh()
@@ -24,7 +28,7 @@ const DeleteDossier = ({refresh,id}) => {
                     <Modal.Header>
                         <Modal.Title>Supression</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Voulez vous supprimer ce dossir?</Modal.Body>
+                    <Modal.Body>Voulez vous supprimer le(s) dossier(s) sélectionné(s)?</Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Annuler

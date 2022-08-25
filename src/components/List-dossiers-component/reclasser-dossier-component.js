@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import jwt from "jwt-decode";
 import Select from "react-select";
 
-const ReclasserDossier = ({refresh,id}) => {
+const ReclasserDossier = ({refresh,selectedData}) => {
     const date1 = new Date();
     const futureDate = date1.getDate() ;
     date1.setDate(futureDate);
@@ -58,13 +58,13 @@ const ReclasserDossier = ({refresh,id}) => {
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
-        const dossier = {emplacement,date};
+        const dossier = {emplacement,date,selectedData};
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
         else{
-            fetch('https://backend-avocat.herokuapp.com/dossiers/'+id,{
+            fetch('https://backend-avocat.herokuapp.com/dossiers/',{
                 method:"PUT",
                 headers:{"Content-Type":"application/json"},
                 body: JSON.stringify(dossier)
@@ -80,8 +80,6 @@ const ReclasserDossier = ({refresh,id}) => {
         setRefreshKey(oldKey => oldKey +1)
 
         setValidated(true);
-
-
     };
     return(
         <div className="row">

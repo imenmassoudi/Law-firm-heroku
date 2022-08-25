@@ -10,6 +10,8 @@ const Collaborateur  = () => {
     const history = useHistory()
     const [x,setX] = useState(1);
     const [data,setData]= useState([]);
+    const [searchTerm,setSearchTerm] = useState("")
+
     useEffect(() => {
         const token = localStorage.getItem('token')
 
@@ -49,7 +51,7 @@ return(
             <div className="col-12">
         <div className="card">
             <div className="card-header">
-                <h3 className="card-title">Liste des collaborateur</h3>
+                <h3 className="card-title">Liste des collaborateurs</h3>
 
                 <div className="card-tools">
                     {/*<Button variant="primary" onClick={handleShow}>
@@ -59,7 +61,18 @@ return(
                 </div>
             </div>
             <div className="card-body table-responsive p-0" style={{height: "300px"}}>
-                <table className="table table-head-fixed text-nowrap">
+                <p style={{float:"right"}}>
+                    <div className="input-group input-group-sm mb-3 right floated " >
+
+                        <input type="text" className="form-control-sm" aria-label="Small" onChange={event => {setSearchTerm(event.target.value)}}
+                               aria-describedby="inputGroup-sizing-sm" placeholder="chercher..." style={{borderTop:"none",borderRight:"none",borderLeft:"none"}}/>
+                        <div className="input-group-prepend" >
+                            <span className="input-group-text" id="inputGroup-sizing-sm" ><i className="fa fa-search"/></span>
+                        </div>
+                    </div>
+
+                </p>
+                <table className="table table-head-fixed text-nowrap table-hover">
                     <thead>
                     <tr>
                        
@@ -78,7 +91,22 @@ return(
                     </tr>
                     </thead>
                     <tbody>
-                        {data.map((data) => (
+                        {data.filter((data)=>{
+                            if(searchTerm === ""){
+                                return data
+                            }else  {if (data.nom.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                ( data.cin.toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.rue.toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.num.toString().toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.code_postale.toString().toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.activite.toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.tel.toString().toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.email.toLowerCase().includes(searchTerm.toLowerCase()))||
+                                ( data.matricule.toString().toLowerCase().includes(searchTerm.toLowerCase()))||
+                                (  data.ville.toLowerCase().includes(searchTerm.toLowerCase()))) {
+                                return data
+                            } }
+                        }).map((data) => (
                             <tr key={data._id}>
                               
                                 <td>{data.nom}</td>

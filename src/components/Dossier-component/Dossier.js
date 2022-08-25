@@ -70,6 +70,7 @@ export default function ReactTabs() {
         } },[])
 
     const handleSubmit = (event) => {
+        alert("client séléctionné")
         const form = event.currentTarget;
         const user = {username,nom,prenom,mdp};
         if (form.checkValidity() === false ) {
