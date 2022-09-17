@@ -71,7 +71,8 @@ const clientSchema = new Schema({
             unique: true
         },
         idDossier: {
-            type: String
+            type: String,
+            unique: true
         },
 
     },

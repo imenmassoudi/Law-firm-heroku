@@ -129,12 +129,12 @@ const AddClient = ({refresh,clientsList}) => {
             })
                 handleClose();
                 refresh();
-      //  event.preventDefault()
+        event.preventDefault()
 
                  //setX(x+1);
             })
         }
-      //  event.preventDefault()
+        event.preventDefault()
         setValidated(true);
 
 
